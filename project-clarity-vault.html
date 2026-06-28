@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Clarity — Memory Vault</title>
+    <style>
+        :root {
+            --bg: #0b1120;
+            --surface: #1e293b;
+            --surface2: #162032;
+            --border: #2d3f55;
+            --text-main: #f1f5f9;
+            --text-muted: #64748b;
+            --text-soft: #94a3b8;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --accent-glow: rgba(59,130,246,0.15);
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --purple: #8b5cf6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+
+        body {
+            background: var(--bg);
+            color: var(--text-main);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* ─── SIDEBAR ─── */
+        .sidebar {
+            width: 300px;
+            min-width: 300px;
+            background: var(--surface);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 20;
+        }
+
+        .sidebar-top {
+            padding: 20px 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .app-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .app-logo-icon {
+            width: 32px; height: 32px;
+            background: linear-gradient(135deg, var(--accent), var(--purple));
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px;
+        }
+
+        .app-logo-text {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: 0.3px;
+        }
+
+        .app-logo-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .search-box {
+            width: 100%;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 10px 14px;
+            font-size: 13px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            transition: border-color 0.2s;
+        }
+
+        .search-box:focus { outline: none; border-color: var(--accent); }
+        .search-box::placeholder { color: var(--text-muted); }
+
+        .sidebar-section-label {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 14px 20px 8px;
+        }
+
+        .project-list { list-style: none; overflow-y: auto; flex: 1; }
+
+        .project-item {
+            padding: 14px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+        }
+
+        .project-item:hover { background: rgba(255,255,255,0.04); }
+
+        .project-item.active {
+            background: var(--accent-glow);
+            border-left: 3px solid var(--accent);
+        }
+
+        .project-item.active .proj-name { color: var(--text-main); font-weight: 600; }
+
+        .proj-icon {
+            width: 34px; height: 34px;
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .proj-info { flex: 1; min-width: 0; }
+
+        .proj-name {
+            font-size: 12px;
+            color: var(--text-soft);
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.3;
+        }
+
+        .proj-status-line {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .status-dot {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .sidebar-footer {
+            padding: 16px 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 8px;
+        }
+
+        .footer-btn {
+            flex: 1;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            color: var(--text-soft);
+            padding: 9px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .footer-btn:hover { background: rgba(255,255,255,0.1); color: var(--text-main); }
+        .footer-btn.primary { background: var(--accent); color: white; border-color: var(--accent); }
+        .footer-btn.primary:hover { background: var(--accent-hover); }
+
+        /* ─── MAIN STAGE ─── */
+        .main-stage {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background: radial-gradient(ellipse at top right, rgba(59,130,246,0.06) 0%, transparent 60%);
+        }
+
+        .main-header {
+            padding: 28px 40px 0;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .main-title-area { flex: 1; }
+
+        .main-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .main-subtitle {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+
+        .header-actions { display: flex; gap: 8px; align-items: center; }
+
+        .icon-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            color: var(--text-soft);
+            width: 36px; height: 36px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s;
+            font-size: 16px;
+        }
+
+        .icon-btn:hover { background: rgba(255,255,255,0.1); color: var(--text-main); }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 4px;
+            padding: 20px 40px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tab {
+            padding: 10px 18px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+            margin-bottom: -1px;
+        }
+
+        .tab:hover { color: var(--text-soft); }
+        .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+        /* Tab Content */
+        .tab-content { display: none; flex: 1; overflow-y: auto; padding: 32px 40px; }
+        .tab-content.active { display: flex; flex-direction: column; gap: 20px; }
+
+        /* Cards */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px 32px;
+        }
+
+        .card-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+        }
+
+        .card-value {
+            font-size: 18px;
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        .card-value.muted { color: var(--text-muted); font-style: italic; font-size: 15px; }
+
+        /* Status Badge */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Link Card */
+        .link-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border);
+            padding: 12px 20px;
+            border-radius: 10px;
+            color: var(--text-soft);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .link-card:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
+
+        .link-card span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+        /* Notes area */
+        .notes-area {
+            width: 100%;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 18px 20px;
+            font-size: 14px;
+            line-height: 1.7;
+            border-radius: 10px;
+            resize: vertical;
+            min-height: 160px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .notes-area:focus { outline: none; border-color: var(--accent); }
+        .notes-area::placeholder { color: var(--text-muted); }
+
+        .memory-box {
+            background: rgba(15,23,42,0.72);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px 18px;
+            color: var(--text-soft);
+            font-size: 13px;
+            line-height: 1.65;
+            white-space: pre-wrap;
+            min-height: 120px;
+        }
+
+        .memory-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .memory-updated {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .file-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .file-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 12px;
+            align-items: center;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 14px;
+        }
+
+        .file-name {
+            color: var(--text-main);
+            font-size: 14px;
+            overflow-wrap: anywhere;
+        }
+
+        .file-meta {
+            color: var(--text-muted);
+            font-size: 12px;
+            margin-top: 4px;
+            overflow-wrap: anywhere;
+        }
+
+        .file-empty {
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 14px;
+        }
+
+        /* Edit Form */
+        .form-group { margin-bottom: 24px; }
+
+        .form-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .form-input {
+            width: 100%;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 14px 18px;
+            font-size: 15px;
+            border-radius: 10px;
+            font-family: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
+        .form-input::placeholder { color: var(--text-muted); }
+
+        select.form-input { cursor: pointer; }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px 24px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+        .btn-success { background: var(--success); color: white; }
+        .btn-success:hover { background: #059669; transform: translateY(-1px); }
+        .btn-ghost { background: rgba(255,255,255,0.05); color: var(--text-soft); border: 1px solid var(--border); }
+        .btn-ghost:hover { background: rgba(255,255,255,0.1); color: var(--text-main); }
+        .btn-danger { background: rgba(239,68,68,0.1); color: var(--danger); border: 1px solid rgba(239,68,68,0.2); }
+        .btn-danger:hover { background: rgba(239,68,68,0.2); }
+
+        .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+        /* Empty State */
+        .empty-state {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            color: var(--text-muted);
+            padding: 60px;
+            text-align: center;
+        }
+
+        .empty-icon { font-size: 48px; opacity: 0.4; }
+        .empty-title { font-size: 18px; font-weight: 600; color: var(--text-soft); }
+        .empty-sub { font-size: 14px; max-width: 300px; line-height: 1.6; }
+
+        /* ─── RIGHT PANEL (Dump) ─── */
+        .right-panel {
+            width: 320px;
+            min-width: 320px;
+            background: var(--surface);
+            border-left: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            z-index: 20;
+        }
+
+        .panel-header {
+            padding: 20px 20px 16px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .panel-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .panel-actions { display: flex; gap: 6px; }
+
+        .dump-textarea {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            padding: 20px;
+            font-size: 13px;
+            line-height: 1.7;
+            resize: none;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .dump-textarea::placeholder { color: #3d5068; }
+
+        .dump-footer {
+            padding: 12px 20px;
+            border-top: 1px solid var(--border);
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        /* ─── MODAL ─── */
+        .modal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(4px);
+            z-index: 100;
+            display: flex; align-items: center; justify-content: center;
+            padding: 20px;
+        }
+
+        .modal {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            width: 100%;
+            max-width: 520px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .modal-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--text-main);
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 24px; right: 24px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--success);
+            padding: 14px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-main);
+            z-index: 200;
+            transform: translateY(80px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .toast.show { transform: translateY(0); opacity: 1; }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+
+        .hidden { display: none !important; }
+
+        /* Priority tag */
+        .priority-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Divider */
+        .divider { height: 1px; background: var(--border); margin: 4px 0; }
+
+        /* Last updated */
+        .last-updated {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        /* Progress bar */
+        .progress-bar-wrap {
+            background: var(--bg);
+            border-radius: 4px;
+            height: 6px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--purple));
+            transition: width 0.4s ease;
+        }
+
+        /* Emoji picker row */
+        .emoji-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .emoji-opt {
+            width: 36px; height: 36px;
+            border-radius: 8px;
+            border: 2px solid var(--border);
+            background: var(--bg);
+            cursor: pointer;
+            font-size: 18px;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.15s;
+        }
+
+        .emoji-opt:hover, .emoji-opt.selected { border-color: var(--accent); background: var(--accent-glow); }
+
+        @media (max-width: 900px) {
+            body {
+                display: block;
+                height: auto;
+                min-height: 100vh;
+                overflow: auto;
+            }
+
+            .sidebar,
+            .right-panel {
+                width: 100%;
+                min-width: 0;
+                max-height: none;
+                border: 0;
+            }
+
+            .sidebar {
+                border-bottom: 1px solid var(--border);
+            }
+
+            .project-list {
+                max-height: 260px;
+            }
+
+            .main-stage {
+                min-height: 640px;
+                overflow: visible;
+            }
+
+            .main-header,
+            .tabs,
+            .tab-content {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .main-header,
+            .form-row {
+                grid-template-columns: 1fr;
+                flex-direction: column;
+            }
+
+            .tab-content {
+                overflow: visible;
+            }
+
+            .card {
+                padding: 22px;
+                border-radius: 10px;
+            }
+
+            .right-panel {
+                min-height: 320px;
+                border-top: 1px solid var(--border);
+            }
+
+            .sidebar-footer,
+            .tabs {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ─── SIDEBAR ─── -->
+<div class="sidebar">
+    <div class="sidebar-top">
+        <div class="app-logo">
+            <div class="app-logo-icon">🧠</div>
+            <div>
+                <div class="app-logo-text">Project Clarity</div>
+                <div class="app-logo-sub">Memory Vault</div>
+            </div>
+        </div>
+        <input class="search-box" type="text" id="searchBox" placeholder="🔍  Search projects..." oninput="filterProjects()">
+    </div>
+
+    <div class="sidebar-section-label">Your Projects</div>
+    <ul class="project-list" id="projectList"></ul>
+
+    <div class="sidebar-footer">
+        <button class="footer-btn primary" onclick="openAddModal()">+ New Project</button>
+        <button class="footer-btn" onclick="exportData()" title="Export all data as JSON">⬇ Export</button>
+        <button class="footer-btn" onclick="document.getElementById('importFile').click()" title="Import JSON backup">⬆ Import</button>
+        <input type="file" id="importFile" accept=".json" class="hidden" onchange="importData(event)">
+    </div>
+</div>
+
+<!-- ─── MAIN STAGE ─── -->
+<div class="main-stage" id="mainStage">
+
+    <!-- Empty state -->
+    <div class="empty-state" id="emptyState">
+        <div class="empty-icon">🗂️</div>
+        <div class="empty-title">Select a project</div>
+        <div class="empty-sub">Choose a project from the sidebar to view its memory, or create a new one.</div>
+    </div>
+
+    <!-- Project view (hidden until selected) -->
+    <div id="projectView" class="hidden" style="display:flex;flex-direction:column;height:100%;overflow:hidden;">
+
+        <div class="main-header">
+            <div class="main-title-area">
+                <div class="main-title" id="viewTitle">—</div>
+                <div class="main-subtitle" id="viewMeta">—</div>
+            </div>
+            <div class="header-actions">
+                <button class="icon-btn" onclick="toggleEditMode()" title="Edit project">✏️</button>
+                <button class="icon-btn" onclick="confirmDelete()" title="Delete project">🗑️</button>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('overview', this)">Overview</div>
+            <div class="tab" onclick="switchTab('notes', this)">Notes</div>
+            <div class="tab" onclick="switchTab('files', this)">Files</div>
+            <div class="tab" onclick="switchTab('edit', this)" id="editTab">Edit</div>
+        </div>
+
+        <!-- OVERVIEW TAB -->
+        <div class="tab-content active" id="tab-overview">
+            <div class="card">
+                <div class="card-label">Status — Where you're at</div>
+                <div id="viewStatus" class="card-value"></div>
+                <div id="viewUpdated" class="last-updated"></div>
+            </div>
+
+            <div class="card">
+                <div class="card-label">Next Step — What to do next</div>
+                <div id="viewNext" class="card-value"></div>
+            </div>
+
+            <div class="card">
+                <div class="card-label">Priority & Progress</div>
+                <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+                    <span id="viewPriority" class="priority-tag"></span>
+                    <span id="viewProgress" style="font-size:13px;color:var(--text-muted);"></span>
+                </div>
+                <div class="progress-bar-wrap" style="margin-top:16px;">
+                    <div class="progress-bar-fill" id="viewProgressBar" style="width:0%"></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-label">Key Link — Where the work lives</div>
+                <div id="viewLinkContainer"></div>
+            </div>
+        </div>
+
+        <!-- NOTES TAB -->
+        <div class="tab-content" id="tab-notes">
+            <div class="card" style="flex:1;display:flex;flex-direction:column;gap:12px;">
+                <div class="card-label">Project Notes</div>
+                <textarea class="notes-area" id="projectNotes" placeholder="Add notes, ideas, blockers, context... anything relevant to this project." oninput="autoSaveNotes()"></textarea>
+                <div style="font-size:11px;color:var(--text-muted);" id="notesSavedMsg"></div>
+            </div>
+            <div class="card" style="display:flex;flex-direction:column;gap:12px;">
+                <div class="memory-actions">
+                    <div>
+                        <div class="card-label">Auto Memory</div>
+                        <div class="memory-updated" id="memoryUpdatedMsg"></div>
+                    </div>
+                    <button class="btn btn-primary" onclick="refreshProjectMemory()">Refresh Memory</button>
+                </div>
+                <div class="memory-box" id="projectMemory"></div>
+            </div>
+        </div>
+
+        <!-- FILES TAB -->
+        <div class="tab-content" id="tab-files">
+            <div class="card">
+                <div class="card-label">Project Database / Folder</div>
+                <div class="form-group">
+                    <label class="form-label">Local Folder Path</label>
+                    <input class="form-input" type="text" id="projectFolderPath" placeholder="C:\Users\Super\Documents\Project Folder">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Cloud Folder Link</label>
+                    <input class="form-input" type="text" id="projectCloudFolder" placeholder="https://drive.google.com/... or https://onedrive.live.com/...">
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-success" onclick="saveProjectConnections()">Save Connections</button>
+                    <label class="btn btn-ghost" for="folderPicker">Scan Folder List</label>
+                    <input id="folderPicker" type="file" webkitdirectory multiple onchange="importFolderListing(event)" style="display:none;">
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-label">Add Related File / Link</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Name</label>
+                        <input class="form-input" type="text" id="relatedFileName" placeholder="Brief, document, image, spreadsheet...">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Path or URL</label>
+                        <input class="form-input" type="text" id="relatedFilePath" placeholder="https://... or local path">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Note</label>
+                    <input class="form-input" type="text" id="relatedFileNote" placeholder="Why this file matters">
+                </div>
+                <button class="btn btn-primary" onclick="addRelatedFile()">Add File</button>
+            </div>
+
+            <div class="card">
+                <div class="card-label">Related Files</div>
+                <div class="file-list" id="relatedFilesList"></div>
+            </div>
+        </div>
+
+        <!-- EDIT TAB -->
+        <div class="tab-content" id="tab-edit">
+            <div class="card">
+                <div class="form-group">
+                    <label class="form-label">Project Name</label>
+                    <input class="form-input" type="text" id="editName" placeholder="Project name">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Icon / Emoji</label>
+                        <div class="emoji-row" id="emojiRow"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Priority</label>
+                        <select class="form-input" id="editPriority">
+                            <option value="high">🔴 High</option>
+                            <option value="medium">🟡 Medium</option>
+                            <option value="low">🟢 Low</option>
+                            <option value="on-hold">⏸️ On Hold</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Status — Where you're at</label>
+                    <input class="form-input" type="text" id="editStatus" placeholder="e.g. In progress — scripting phase">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Next Step — What to do next</label>
+                    <input class="form-input" type="text" id="editNext" placeholder="e.g. Outline the intro section">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Progress (0–100%)</label>
+                    <input class="form-input" type="number" id="editProgress" min="0" max="100" placeholder="0">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Key Link URL</label>
+                    <input class="form-input" type="text" id="editLink" placeholder="https://...">
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-success" onclick="saveProject()">✓ Save Changes</button>
+                    <button class="btn btn-ghost" onclick="switchTab('overview', document.querySelector('.tab'))">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ─── RIGHT PANEL ─── -->
+<div class="right-panel">
+    <div class="panel-header">
+        <div class="panel-title">🗒 Brain Dump</div>
+        <div class="panel-actions">
+            <button class="icon-btn" onclick="clearDump()" title="Clear dump" style="font-size:12px;width:auto;padding:0 10px;color:var(--text-muted);">Clear</button>
+        </div>
+    </div>
+    <textarea class="dump-textarea" id="dumpArea" placeholder="Paste anything here — Perplexity results, AI chat logs, random ideas, links, thoughts...&#10;&#10;This is your messy thinking space. Nothing is judged here."></textarea>
+    <div class="dump-footer" id="dumpWordCount">0 characters</div>
+</div>
+
+<!-- ─── ADD PROJECT MODAL ─── -->
+<div class="modal-overlay hidden" id="addModal">
+    <div class="modal">
+        <div class="modal-title">➕ New Project</div>
+        <div class="form-group">
+            <label class="form-label">Project Name</label>
+            <input class="form-input" type="text" id="newName" placeholder="e.g. Content Engine System">
+        </div>
+        <div class="form-group">
+            <label class="form-label">Choose an Icon</label>
+            <div class="emoji-row" id="newEmojiRow"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label class="form-label">Priority</label>
+                <select class="form-input" id="newPriority">
+                    <option value="high">🔴 High</option>
+                    <option value="medium" selected>🟡 Medium</option>
+                    <option value="low">🟢 Low</option>
+                    <option value="on-hold">⏸️ On Hold</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Progress %</label>
+                <input class="form-input" type="number" id="newProgress" min="0" max="100" value="0">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Initial Status</label>
+            <input class="form-input" type="text" id="newStatus" placeholder="e.g. Just started — planning phase">
+        </div>
+        <div class="form-group">
+            <label class="form-label">First Next Step</label>
+            <input class="form-input" type="text" id="newNext" placeholder="e.g. Define scope and goals">
+        </div>
+        <div class="form-group">
+            <label class="form-label">Key Link (optional)</label>
+            <input class="form-input" type="text" id="newLink" placeholder="https://...">
+        </div>
+        <div class="btn-row">
+            <button class="btn btn-primary" onclick="addProject()">Create Project</button>
+            <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<!-- ─── TOAST ─── -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────────────────────
+
+const EMOJIS = ['🌿','🗺️','📦','🎯','📧','🎓','🏠','📹','💡','🔬','💼','🚀','🌍','🧠','⚡','🎨','📊','🔧','🌐','💰'];
+
+const DEFAULT_PROJECTS = [
+    {
+        id: 'p1',
+        name: 'Pisatahua / Sustainable Bolivia',
+        icon: '🌿',
+        status: 'Active — No memory set',
+        next: 'Define next action',
+        link: '',
+        priority: 'high',
+        progress: 0,
+        notes: '',
+        updatedAt: null
+    },
+    {
+        id: 'p2',
+        name: 'Knowledge + Research Vault',
+        icon: '🔬',
+        status: 'Active — No memory set',
+        next: 'Define next action',
+        link: '',
+        priority: 'medium',
+        progress: 0,
+        notes: '',
+        updatedAt: null
+    },
+    {
+        id: 'p3',
+        name: 'Reseller Operation Command Centre',
+        icon: '📦',
+        status: 'Active — No memory set',
+        next: 'Define next action',
+        link: '',
+        priority: 'high',
+        progress: 0,
+        notes: '',
+        updatedAt: null
+    },
+    {
+        id: 'p4',
+        name: 'Veil Cartography',
+        icon: '🗺️',
+        status: 'Active — No memory set',
+        next: 'Define next action',
+        link: '',
+        priority: 'medium',
+        progress: 0,
+        notes: '',
+        updatedAt: null
+    },
+    {
+        id: 'p5',
+        name: 'Email Manager / AI Operations System',
+        icon: '📧',
+        status: 'Active — No memory set',
+        next: 'Define next action',
+        link: '',
+        priority: 'high',
+        progress: 0,
+        notes: '',
+        updatedAt: null
+    },
+    {
+        id: 'p6',
+        name: 'Course + Digital Product Ecosystem',
+        icon: '🎓',
+        status: 'Active — No memory set',
+        next: 'Define next action',
+        link: '',
+        priority: 'medium',
+        progress: 0,
+        notes: '',
+        updatedAt: null
+    },
+    {
+        id: 'p7',
+        name: 'Personal Life Infrastructure',
+        icon: '🏠',
+        status: 'Active — No memory set',
+        next: 'Define next action',
+        link: '',
+        priority: 'medium',
+        progress: 0,
+        notes: '',
+        updatedAt: null
+    },
+    {
+        id: 'p8',
+        name: 'Content Engine System',
+        icon: '📹',
+        status: 'Active — No memory set',
+        next: 'Define next action',
+        link: '',
+        priority: 'high',
+        progress: 0,
+        notes: '',
+        updatedAt: null
+    }
+];
+
+let projects = [];
+let currentId = null;
+let activeTab = 'overview';
+let selectedEmoji = '🎯';
+let newSelectedEmoji = '🎯';
+let notesTimer = null;
+const EMPTY_STATUS = 'Active — No memory set';
+const EMPTY_NEXT = 'Define next action';
+const VALID_PRIORITIES = ['high', 'medium', 'low', 'on-hold'];
+
+// ─── INIT ────────────────────────────────────────────────────────────────────
+
+function init() {
+    const stored = localStorage.getItem('projectClarity_v2');
+    projects = loadStoredProjects(stored);
+    if (!stored || !localStorage.getItem('projectClarity_v2')) save();
+
+    const dump = localStorage.getItem('projectClarity_dump');
+    if (dump) document.getElementById('dumpArea').value = dump;
+
+    document.getElementById('dumpArea').addEventListener('input', e => {
+        localStorage.setItem('projectClarity_dump', e.target.value);
+        document.getElementById('dumpWordCount').textContent = e.target.value.length + ' characters';
+    });
+
+    buildEmojiPicker('emojiRow', (e) => { selectedEmoji = e; });
+    buildEmojiPicker('newEmojiRow', (e) => { newSelectedEmoji = e; });
+
+    renderSidebar();
+}
+
+// ─── SAVE ────────────────────────────────────────────────────────────────────
+
+function save() {
+    localStorage.setItem('projectClarity_v2', JSON.stringify(projects));
+}
+
+// ─── SIDEBAR ─────────────────────────────────────────────────────────────────
+
+function renderSidebar(filter = '') {
+    const list = document.getElementById('projectList');
+    list.replaceChildren();
+    const filterText = String(filter).toLowerCase();
+    const filtered = projects.filter(p => p.name.toLowerCase().includes(filterText));
+
+    filtered.forEach(p => {
+        const li = document.createElement('li');
+        li.className = 'project-item' + (p.id === currentId ? ' active' : '');
+
+        const dotColor = priorityColor(p.priority);
+        const hasMemory = !isEmptyStatus(p.status);
+        const icon = document.createElement('div');
+        icon.className = 'proj-icon';
+        icon.style.background = priorityBg(p.priority);
+        icon.textContent = p.icon || '📁';
+
+        const info = document.createElement('div');
+        info.className = 'proj-info';
+
+        const name = document.createElement('div');
+        name.className = 'proj-name';
+        name.textContent = p.name;
+
+        const status = document.createElement('div');
+        status.className = 'proj-status-line';
+        status.textContent = hasMemory ? p.status : '— No memory set';
+
+        const dot = document.createElement('div');
+        dot.className = 'status-dot';
+        dot.style.background = dotColor;
+        if (hasMemory) dot.style.boxShadow = '0 0 6px ' + dotColor + '66';
+
+        info.append(name, status);
+        li.append(icon, info, dot);
+        li.onclick = () => selectProject(p.id);
+        list.appendChild(li);
+    });
+}
+
+function filterProjects() {
+    renderSidebar(document.getElementById('searchBox').value);
+}
+
+// ─── SELECT PROJECT ───────────────────────────────────────────────────────────
+
+function selectProject(id) {
+    currentId = id;
+    renderSidebar(document.getElementById('searchBox').value);
+
+    const p = projects.find(x => x.id === id);
+    if (!p) return;
+
+    document.getElementById('emptyState').classList.add('hidden');
+    const pv = document.getElementById('projectView');
+    pv.classList.remove('hidden');
+    pv.style.display = 'flex';
+
+    // Header
+    document.getElementById('viewTitle').textContent = (p.icon || '') + '  ' + p.name;
+    document.getElementById('viewMeta').textContent = 'Priority: ' + capitalize(p.priority) + '  ·  Progress: ' + (p.progress || 0) + '%';
+
+    // Overview
+    const hasStatus = p.status && !isEmptyStatus(p.status);
+    const viewStatus = document.getElementById('viewStatus');
+    viewStatus.replaceChildren();
+    if (hasStatus) {
+        viewStatus.textContent = p.status;
+    } else {
+        viewStatus.appendChild(makeMutedMessage('No status set yet — click Edit to update', '15px'));
+    }
+
+    const hasNext = p.next && p.next !== EMPTY_NEXT;
+    const viewNext = document.getElementById('viewNext');
+    viewNext.replaceChildren();
+    if (hasNext) {
+        viewNext.textContent = p.next;
+    } else {
+        viewNext.appendChild(makeMutedMessage('No next step defined yet', '15px'));
+    }
+
+    document.getElementById('viewUpdated').textContent = p.updatedAt
+        ? 'Last updated: ' + new Date(p.updatedAt).toLocaleString()
+        : '';
+
+    // Priority badge
+    const pb = document.getElementById('viewPriority');
+    pb.textContent = capitalize(p.priority);
+    pb.style.background = priorityBg(p.priority);
+    pb.style.color = priorityColor(p.priority);
+
+    // Progress
+    const prog = p.progress || 0;
+    document.getElementById('viewProgress').textContent = prog + '% complete';
+    document.getElementById('viewProgressBar').style.width = prog + '%';
+
+    // Link
+    const lc = document.getElementById('viewLinkContainer');
+    lc.replaceChildren();
+    const safeLink = normalizeUrl(p.link);
+    if (safeLink) {
+        const a = document.createElement('a');
+        a.href = safeLink;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.className = 'link-card';
+        a.append('🔗 ');
+
+        const span = document.createElement('span');
+        span.textContent = safeLink;
+        a.appendChild(span);
+        lc.appendChild(a);
+    } else {
+        lc.appendChild(makeMutedMessage('No link added yet', '14px'));
+    }
+
+    // Notes
+    document.getElementById('projectNotes').value = p.notes || '';
+    document.getElementById('notesSavedMsg').textContent = '';
+    renderProjectMemory(p);
+
+    // Files
+    document.getElementById('projectFolderPath').value = p.folderPath || '';
+    document.getElementById('projectCloudFolder').value = p.cloudFolder || '';
+    renderRelatedFiles(p);
+
+    // Pre-fill edit form
+    document.getElementById('editName').value = p.name;
+    document.getElementById('editStatus').value = hasStatus ? p.status : '';
+    document.getElementById('editNext').value = hasNext ? p.next : '';
+    document.getElementById('editLink').value = p.link || '';
+    document.getElementById('editPriority').value = p.priority || 'medium';
+    document.getElementById('editProgress').value = p.progress || 0;
+    selectedEmoji = p.icon || '🎯';
+    highlightEmoji('emojiRow', selectedEmoji);
+
+    switchTab('overview', document.querySelectorAll('.tab')[0]);
+}
+
+// ─── TABS ─────────────────────────────────────────────────────────────────────
+
+function switchTab(name, el) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+
+    // Find the clicked tab element
+    const tabs = document.querySelectorAll('.tab');
+    const tabNames = ['overview', 'notes', 'files', 'edit'];
+    const idx = tabNames.indexOf(name);
+    if (idx >= 0) tabs[idx].classList.add('active');
+
+    document.getElementById('tab-' + name).classList.add('active');
+    activeTab = name;
+}
+
+// ─── EDIT / SAVE ─────────────────────────────────────────────────────────────
+
+function toggleEditMode() {
+    switchTab('edit', null);
+    document.querySelectorAll('.tab')[3].classList.add('active');
+}
+
+function saveProject() {
+    if (!currentId) return;
+    const idx = projects.findIndex(p => p.id === currentId);
+    if (idx < 0) return;
+
+    projects[idx].name = document.getElementById('editName').value || projects[idx].name;
+    projects[idx].icon = selectedEmoji;
+    projects[idx].status = document.getElementById('editStatus').value || EMPTY_STATUS;
+    projects[idx].next = document.getElementById('editNext').value || EMPTY_NEXT;
+    projects[idx].link = normalizeUrl(document.getElementById('editLink').value) || '';
+    projects[idx].priority = normalizePriority(document.getElementById('editPriority').value);
+    projects[idx].progress = clampProgress(document.getElementById('editProgress').value);
+    projects[idx].updatedAt = new Date().toISOString();
+    updateProjectMemory(projects[idx]);
+
+    save();
+    selectProject(currentId);
+    showToast('✓ Project saved!');
+}
+
+// ─── NOTES AUTO-SAVE ─────────────────────────────────────────────────────────
+
+function autoSaveNotes() {
+    clearTimeout(notesTimer);
+    document.getElementById('notesSavedMsg').textContent = 'Saving...';
+    notesTimer = setTimeout(() => {
+        if (!currentId) return;
+        const idx = projects.findIndex(p => p.id === currentId);
+        if (idx < 0) return;
+        projects[idx].notes = document.getElementById('projectNotes').value;
+        updateProjectMemory(projects[idx]);
+        save();
+        document.getElementById('notesSavedMsg').textContent = '✓ Saved automatically';
+        renderProjectMemory(projects[idx]);
+    }, 800);
+}
+
+function refreshProjectMemory() {
+    if (!currentId) return;
+    const idx = projects.findIndex(p => p.id === currentId);
+    if (idx < 0) return;
+
+    projects[idx].notes = document.getElementById('projectNotes').value;
+    updateProjectMemory(projects[idx]);
+    save();
+    renderProjectMemory(projects[idx]);
+    document.getElementById('notesSavedMsg').textContent = 'Memory refreshed';
+}
+
+function updateProjectMemory(project) {
+    project.memory = buildProjectMemory(project);
+    project.memoryUpdatedAt = new Date().toISOString();
+}
+
+function renderProjectMemory(project) {
+    const memory = project.memory || buildProjectMemory(project);
+    document.getElementById('projectMemory').textContent = memory || 'No project memory yet. Add notes, then refresh memory.';
+    document.getElementById('memoryUpdatedMsg').textContent = project.memoryUpdatedAt
+        ? 'Updated: ' + new Date(project.memoryUpdatedAt).toLocaleString()
+        : 'Updates automatically from your notes.';
+}
+
+function saveProjectConnections() {
+    if (!currentId) return;
+    const idx = projects.findIndex(p => p.id === currentId);
+    if (idx < 0) return;
+
+    projects[idx].folderPath = document.getElementById('projectFolderPath').value.trim();
+    projects[idx].cloudFolder = normalizeUrl(document.getElementById('projectCloudFolder').value) || '';
+    projects[idx].updatedAt = new Date().toISOString();
+    updateProjectMemory(projects[idx]);
+    save();
+    renderRelatedFiles(projects[idx]);
+    renderProjectMemory(projects[idx]);
+    showToast('Project connections saved');
+}
+
+function addRelatedFile() {
+    if (!currentId) return;
+    const idx = projects.findIndex(p => p.id === currentId);
+    if (idx < 0) return;
+
+    const name = document.getElementById('relatedFileName').value.trim();
+    const path = document.getElementById('relatedFilePath').value.trim();
+    const note = document.getElementById('relatedFileNote').value.trim();
+    if (!name && !path) {
+        document.getElementById('relatedFileName').focus();
+        return;
+    }
+
+    projects[idx].files = normalizeFileList(projects[idx].files);
+    projects[idx].files.push({
+        id: 'f' + Date.now(),
+        name: name || path,
+        path,
+        note,
+        source: normalizeUrl(path) ? 'cloud' : 'local',
+        addedAt: new Date().toISOString()
+    });
+    projects[idx].updatedAt = new Date().toISOString();
+    updateProjectMemory(projects[idx]);
+    save();
+
+    document.getElementById('relatedFileName').value = '';
+    document.getElementById('relatedFilePath').value = '';
+    document.getElementById('relatedFileNote').value = '';
+    renderRelatedFiles(projects[idx]);
+    renderProjectMemory(projects[idx]);
+}
+
+function removeRelatedFile(fileId) {
+    if (!currentId) return;
+    const idx = projects.findIndex(p => p.id === currentId);
+    if (idx < 0) return;
+
+    projects[idx].files = normalizeFileList(projects[idx].files).filter(file => file.id !== fileId);
+    projects[idx].updatedAt = new Date().toISOString();
+    updateProjectMemory(projects[idx]);
+    save();
+    renderRelatedFiles(projects[idx]);
+    renderProjectMemory(projects[idx]);
+}
+
+function importFolderListing(event) {
+    if (!currentId) return;
+    const idx = projects.findIndex(p => p.id === currentId);
+    if (idx < 0) return;
+
+    const selectedFiles = Array.from(event.target.files || []);
+    if (!selectedFiles.length) return;
+
+    const existing = normalizeFileList(projects[idx].files);
+    const imported = selectedFiles.slice(0, 200).map(file => ({
+        id: 'f' + Date.now() + '-' + Math.random().toString(16).slice(2),
+        name: file.name,
+        path: file.webkitRelativePath || file.name,
+        note: 'Imported from folder scan',
+        source: 'folder-scan',
+        size: file.size,
+        addedAt: new Date().toISOString()
+    }));
+
+    projects[idx].files = mergeFileLists(existing, imported);
+    projects[idx].updatedAt = new Date().toISOString();
+    updateProjectMemory(projects[idx]);
+    save();
+    renderRelatedFiles(projects[idx]);
+    renderProjectMemory(projects[idx]);
+    event.target.value = '';
+    showToast('Folder file list added');
+}
+
+function renderRelatedFiles(project) {
+    const list = document.getElementById('relatedFilesList');
+    list.replaceChildren();
+
+    const files = normalizeFileList(project.files);
+    const cloudFolder = normalizeUrl(project.cloudFolder);
+    if (cloudFolder) {
+        list.appendChild(makeFileItem({
+            id: 'cloud-folder',
+            name: 'Cloud folder',
+            path: cloudFolder,
+            note: 'Main cloud storage location',
+            source: 'cloud'
+        }, false));
+    }
+
+    if (project.folderPath) {
+        list.appendChild(makeFileItem({
+            id: 'local-folder',
+            name: 'Local folder',
+            path: project.folderPath,
+            note: 'Main local project folder',
+            source: 'local'
+        }, false));
+    }
+
+    files.forEach(file => list.appendChild(makeFileItem(file, true)));
+    if (!cloudFolder && !project.folderPath && !files.length) {
+        const empty = document.createElement('div');
+        empty.className = 'file-empty';
+        empty.textContent = 'No folders or related files connected yet.';
+        list.appendChild(empty);
+    }
+}
+
+function makeFileItem(file, canRemove) {
+    const item = document.createElement('div');
+    item.className = 'file-item';
+
+    const info = document.createElement('div');
+    const name = document.createElement('div');
+    name.className = 'file-name';
+    name.textContent = file.name || 'Untitled file';
+
+    const meta = document.createElement('div');
+    meta.className = 'file-meta';
+    meta.textContent = [file.path, file.note, file.size ? formatBytes(file.size) : ''].filter(Boolean).join(' | ');
+    info.append(name, meta);
+
+    const safeLink = normalizeUrl(file.path);
+    if (safeLink) {
+        const open = document.createElement('a');
+        open.href = safeLink;
+        open.target = '_blank';
+        open.rel = 'noopener noreferrer';
+        open.className = 'btn btn-ghost';
+        open.textContent = 'Open';
+        item.append(info, open);
+    } else if (canRemove) {
+        const remove = document.createElement('button');
+        remove.className = 'btn btn-danger';
+        remove.textContent = 'Remove';
+        remove.onclick = () => removeRelatedFile(file.id);
+        item.append(info, remove);
+    } else {
+        item.append(info, document.createElement('span'));
+    }
+
+    if (safeLink && canRemove) {
+        const remove = document.createElement('button');
+        remove.className = 'btn btn-danger';
+        remove.textContent = 'Remove';
+        remove.onclick = () => removeRelatedFile(file.id);
+        item.appendChild(remove);
+        item.style.gridTemplateColumns = '1fr auto auto';
+    }
+
+    return item;
+}
+
+// ─── ADD PROJECT ──────────────────────────────────────────────────────────────
+
+function openAddModal() {
+    document.getElementById('newName').value = '';
+    document.getElementById('newStatus').value = '';
+    document.getElementById('newNext').value = '';
+    document.getElementById('newLink').value = '';
+    document.getElementById('newProgress').value = 0;
+    newSelectedEmoji = '🎯';
+    highlightEmoji('newEmojiRow', newSelectedEmoji);
+    document.getElementById('addModal').classList.remove('hidden');
+    setTimeout(() => document.getElementById('newName').focus(), 100);
+}
+
+function closeModal() {
+    document.getElementById('addModal').classList.add('hidden');
+}
+
+function addProject() {
+    const name = document.getElementById('newName').value.trim();
+    if (!name) { document.getElementById('newName').focus(); return; }
+
+    const newP = {
+        id: 'p' + Date.now(),
+        name,
+        icon: newSelectedEmoji,
+        status: document.getElementById('newStatus').value || EMPTY_STATUS,
+        next: document.getElementById('newNext').value || EMPTY_NEXT,
+        link: normalizeUrl(document.getElementById('newLink').value) || '',
+        priority: normalizePriority(document.getElementById('newPriority').value),
+        progress: clampProgress(document.getElementById('newProgress').value),
+        notes: '',
+        memory: '',
+        memoryUpdatedAt: null,
+        folderPath: '',
+        cloudFolder: '',
+        files: [],
+        updatedAt: new Date().toISOString()
+    };
+
+    projects.push(newP);
+    save();
+    closeModal();
+    renderSidebar();
+    selectProject(newP.id);
+    showToast('✓ Project created!');
+}
+
+// ─── DELETE ───────────────────────────────────────────────────────────────────
+
+function confirmDelete() {
+    if (!currentId) return;
+    const p = projects.find(x => x.id === currentId);
+    if (!p) return;
+    if (!confirm(`Delete "${p.name}"? This cannot be undone.`)) return;
+
+    projects = projects.filter(x => x.id !== currentId);
+    currentId = null;
+    save();
+    renderSidebar();
+    document.getElementById('projectView').classList.add('hidden');
+    document.getElementById('emptyState').classList.remove('hidden');
+    showToast('🗑️ Project deleted');
+}
+
+// ─── DUMP ─────────────────────────────────────────────────────────────────────
+
+function clearDump() {
+    if (!confirm('Clear the brain dump? This cannot be undone.')) return;
+    document.getElementById('dumpArea').value = '';
+    localStorage.removeItem('projectClarity_dump');
+    document.getElementById('dumpWordCount').textContent = '0 characters';
+}
+
+// ─── EXPORT / IMPORT ─────────────────────────────────────────────────────────
+
+function exportData() {
+    const data = {
+        version: 2,
+        exportedAt: new Date().toISOString(),
+        projects,
+        dump: document.getElementById('dumpArea').value
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'project-clarity-backup-' + new Date().toISOString().slice(0,10) + '.json';
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast('⬇ Data exported!');
+}
+
+function importData(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+        try {
+            const data = JSON.parse(e.target.result);
+            const importedProjects = normalizeProjectList(data.projects);
+            if (!confirm(`Import ${importedProjects.length} projects? This will replace your current data.`)) return;
+            projects = importedProjects;
+            const dump = typeof data.dump === 'string' ? data.dump : '';
+            document.getElementById('dumpArea').value = dump;
+            document.getElementById('dumpWordCount').textContent = dump.length + ' characters';
+            if (dump) localStorage.setItem('projectClarity_dump', dump);
+            else localStorage.removeItem('projectClarity_dump');
+            currentId = null;
+            save();
+            renderSidebar();
+            document.getElementById('projectView').classList.add('hidden');
+            document.getElementById('emptyState').classList.remove('hidden');
+            showToast('⬆ Data imported successfully!');
+        } catch(err) {
+            alert('Import failed: ' + err.message);
+        }
+    };
+    reader.readAsText(file);
+    event.target.value = '';
+}
+
+// ─── EMOJI PICKER ─────────────────────────────────────────────────────────────
+
+function buildEmojiPicker(containerId, onSelect) {
+    const container = document.getElementById(containerId);
+    container.replaceChildren();
+    EMOJIS.forEach(em => {
+        const btn = document.createElement('button');
+        btn.className = 'emoji-opt' + (em === selectedEmoji ? ' selected' : '');
+        btn.textContent = em;
+        btn.onclick = () => {
+            container.querySelectorAll('.emoji-opt').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            onSelect(em);
+        };
+        container.appendChild(btn);
+    });
+}
+
+function highlightEmoji(containerId, emoji) {
+    const container = document.getElementById(containerId);
+    container.querySelectorAll('.emoji-opt').forEach(b => {
+        b.classList.toggle('selected', b.textContent === emoji);
+    });
+}
+
+// ─── HELPERS ─────────────────────────────────────────────────────────────────
+
+function loadStoredProjects(stored) {
+    if (!stored) return cloneDefaultProjects();
+    try {
+        return normalizeProjectList(JSON.parse(stored));
+    } catch (err) {
+        console.warn('Saved project data was invalid and has been reset.', err);
+        localStorage.removeItem('projectClarity_v2');
+        return cloneDefaultProjects();
+    }
+}
+
+function cloneDefaultProjects() {
+    return DEFAULT_PROJECTS.map((project, index) => normalizeProject(project, index));
+}
+
+function normalizeProjectList(value) {
+    if (!Array.isArray(value)) throw new Error('Invalid format: projects must be an array');
+    return value.map((project, index) => normalizeProject(project, index));
+}
+
+function normalizeProject(project, index) {
+    const item = project && typeof project === 'object' ? project : {};
+    const fallbackId = 'p' + Date.now() + '-' + index;
+    const name = toSafeString(item.name).trim() || 'Untitled Project';
+    const icon = toSafeString(item.icon).trim() || '📁';
+    const status = toSafeString(item.status).trim() || EMPTY_STATUS;
+    const next = toSafeString(item.next).trim() || EMPTY_NEXT;
+
+    return {
+        id: toSafeString(item.id).trim() || fallbackId,
+        name,
+        icon,
+        status,
+        next,
+        link: normalizeUrl(item.link) || '',
+        priority: normalizePriority(item.priority),
+        progress: clampProgress(item.progress),
+        notes: toSafeString(item.notes),
+        memory: toSafeString(item.memory),
+        memoryUpdatedAt: normalizeDate(item.memoryUpdatedAt),
+        folderPath: toSafeString(item.folderPath),
+        cloudFolder: normalizeUrl(item.cloudFolder) || '',
+        files: normalizeFileList(item.files),
+        updatedAt: normalizeDate(item.updatedAt)
+    };
+}
+
+function buildProjectMemory(project) {
+    const notes = toSafeString(project.notes);
+    const lines = notes
+        .split(/\r?\n/)
+        .map(line => line.trim())
+        .filter(Boolean);
+
+    const goals = collectMatchingLines(lines, ['goal', 'aim', 'objective', 'want to', 'trying to']);
+    const decisions = collectMatchingLines(lines, ['decided', 'decision', 'settled', 'chosen', 'will use']);
+    const blockers = collectMatchingLines(lines, ['blocker', 'blocked', 'stuck', 'issue', 'problem', 'risk']);
+    const actions = collectMatchingLines(lines, ['next', 'todo', 'to do', 'action', 'follow up', 'need to']);
+    const noteLinks = extractLinks(notes);
+    const highlights = lines
+        .filter(line => !noteLinks.includes(line))
+        .slice(-5);
+
+    const sections = [];
+    sections.push('Project: ' + toSafeString(project.name));
+    sections.push('Status: ' + (isEmptyStatus(project.status) ? 'No status set' : toSafeString(project.status)));
+    sections.push('Next step: ' + (project.next === EMPTY_NEXT ? 'No next step set' : toSafeString(project.next)));
+    sections.push('Progress: ' + clampProgress(project.progress) + '%');
+
+    if (goals.length) sections.push(formatMemorySection('Goals', goals));
+    if (decisions.length) sections.push(formatMemorySection('Decisions', decisions));
+    if (blockers.length) sections.push(formatMemorySection('Blockers / risks', blockers));
+    if (actions.length) sections.push(formatMemorySection('Actions', actions));
+
+    const fileLinks = normalizeFileList(project.files).map(file => normalizeUrl(file.path)).filter(Boolean);
+    const storageRefs = [
+        project.folderPath ? 'Local folder: ' + project.folderPath : '',
+        normalizeUrl(project.cloudFolder) ? 'Cloud folder: ' + normalizeUrl(project.cloudFolder) : ''
+    ].filter(Boolean);
+    const fileRefs = normalizeFileList(project.files)
+        .slice(0, 8)
+        .map(file => file.name + (file.path ? ' - ' + file.path : ''));
+    if (storageRefs.length) sections.push(formatMemorySection('Storage', storageRefs));
+    if (fileRefs.length) sections.push(formatMemorySection('Related files', fileRefs));
+
+    const allLinks = [normalizeUrl(project.link), normalizeUrl(project.cloudFolder), ...noteLinks, ...fileLinks].filter(Boolean);
+    if (allLinks.length) sections.push(formatMemorySection('Links', uniqueItems(allLinks).slice(0, 6)));
+    if (highlights.length) sections.push(formatMemorySection('Recent note highlights', highlights));
+
+    return sections.join('\n\n');
+}
+
+function collectMatchingLines(lines, keywords) {
+    return uniqueItems(lines.filter(line => {
+        const lower = line.toLowerCase();
+        return keywords.some(keyword => lower.includes(keyword));
+    })).slice(0, 6);
+}
+
+function extractLinks(text) {
+    const matches = toSafeString(text).match(/https?:\/\/[^\s<>"']+/gi) || [];
+    return matches.map(link => normalizeUrl(link)).filter(Boolean);
+}
+
+function formatMemorySection(title, items) {
+    return title + ':\n' + items.map(item => '- ' + item).join('\n');
+}
+
+function uniqueItems(items) {
+    return [...new Set(items.filter(Boolean))];
+}
+
+function normalizeFileList(value) {
+    if (!Array.isArray(value)) return [];
+    return value.map((file, index) => {
+        const item = file && typeof file === 'object' ? file : {};
+        const name = toSafeString(item.name).trim();
+        const path = toSafeString(item.path).trim();
+        return {
+            id: toSafeString(item.id).trim() || 'f' + index,
+            name: name || path || 'Untitled file',
+            path,
+            note: toSafeString(item.note).trim(),
+            source: toSafeString(item.source).trim() || 'manual',
+            size: Number.isFinite(item.size) ? item.size : null,
+            addedAt: normalizeDate(item.addedAt)
+        };
+    }).filter(file => file.name || file.path);
+}
+
+function mergeFileLists(existing, incoming) {
+    const byKey = new Map();
+    [...existing, ...incoming].forEach(file => {
+        const key = (file.path || file.name).toLowerCase();
+        if (!byKey.has(key)) byKey.set(key, file);
+    });
+    return Array.from(byKey.values());
+}
+
+function formatBytes(bytes) {
+    const value = Number(bytes);
+    if (!Number.isFinite(value) || value < 0) return '';
+    if (value < 1024) return value + ' B';
+    if (value < 1024 * 1024) return Math.round(value / 1024) + ' KB';
+    return (value / (1024 * 1024)).toFixed(1) + ' MB';
+}
+
+function toSafeString(value) {
+    return typeof value === 'string' ? value : '';
+}
+
+function normalizeDate(value) {
+    if (!value) return null;
+    const date = new Date(value);
+    return Number.isNaN(date.getTime()) ? null : date.toISOString();
+}
+
+function normalizePriority(value) {
+    return VALID_PRIORITIES.includes(value) ? value : 'medium';
+}
+
+function clampProgress(value) {
+    const number = parseInt(value, 10);
+    if (Number.isNaN(number)) return 0;
+    return Math.min(100, Math.max(0, number));
+}
+
+function normalizeUrl(value) {
+    const raw = toSafeString(value).trim();
+    if (!raw) return '';
+    try {
+        const url = new URL(raw);
+        return ['http:', 'https:'].includes(url.protocol) ? url.href : '';
+    } catch (err) {
+        return '';
+    }
+}
+
+function isEmptyStatus(value) {
+    return !value || value === EMPTY_STATUS || value === 'Active - No memory set';
+}
+
+function makeMutedMessage(text, fontSize) {
+    const span = document.createElement('span');
+    span.style.color = 'var(--text-muted)';
+    span.style.fontStyle = 'italic';
+    span.style.fontSize = fontSize;
+    span.textContent = text;
+    return span;
+}
+
+function priorityColor(p) {
+    return { high: '#ef4444', medium: '#f59e0b', low: '#10b981', 'on-hold': '#64748b' }[p] || '#64748b';
+}
+
+function priorityBg(p) {
+    return { high: 'rgba(239,68,68,0.12)', medium: 'rgba(245,158,11,0.12)', low: 'rgba(16,185,129,0.12)', 'on-hold': 'rgba(100,116,139,0.12)' }[p] || 'rgba(100,116,139,0.12)';
+}
+
+function capitalize(s) {
+    if (!s) return '';
+    return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// Close modal on overlay click
+document.getElementById('addModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+});
+
+// Keyboard shortcuts
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+    if ((e.metaKey || e.ctrlKey) && e.key === 'n') { e.preventDefault(); openAddModal(); }
+    if ((e.metaKey || e.ctrlKey) && e.key === 's' && currentId) { e.preventDefault(); saveProject(); }
+});
+
+init();
+</script>
+</body>
+</html>
