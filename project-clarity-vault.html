@@ -984,6 +984,8 @@ function init() {
     projects = loadStoredProjects(stored);
     if (!stored || !localStorage.getItem('projectClarity_v2')) save();
 
+    renameLegacyDefaultProjects();
+
     const dump = localStorage.getItem('projectClarity_dump');
     if (dump) document.getElementById('dumpArea').value = dump;
 
@@ -1002,6 +1004,37 @@ function init() {
 
 function save() {
     localStorage.setItem('projectClarity_v2', JSON.stringify(projects));
+}
+
+// ─── ONE-TIME CLEANUP: rename old default project names to generic labels ────
+// This runs once automatically. It only renames projects whose name exactly
+// matches one of the original hardcoded defaults, so anything you've already
+// renamed yourself is left untouched. Status, notes, files, progress, and
+// links on each project are preserved.
+function renameLegacyDefaultProjects() {
+    if (localStorage.getItem('projectClarity_legacyRenameDone')) return;
+
+    const RENAME_MAP = {
+        'Pisatahua / Sustainable Bolivia': 'Project 1',
+        'Knowledge + Research Vault': 'Project 2',
+        'Reseller Operation Command Centre': 'Project 3',
+        'Veil Cartography': 'Project 4',
+        'Email Manager / AI Operations System': 'Project 5',
+        'Course + Digital Product Ecosystem': 'Project 6',
+        'Personal Life Infrastructure': 'Project 7',
+        'Content Engine System': 'Project 8'
+    };
+
+    let changed = false;
+    projects.forEach(p => {
+        if (RENAME_MAP[p.name]) {
+            p.name = RENAME_MAP[p.name];
+            changed = true;
+        }
+    });
+
+    if (changed) save();
+    localStorage.setItem('projectClarity_legacyRenameDone', '1');
 }
 
 // ─── SIDEBAR ─────────────────────────────────────────────────────────────────
