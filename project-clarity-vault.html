@@ -813,7 +813,7 @@
                 <div class="card-label">Project Database / Folder</div>
                 <div class="form-group">
                     <label class="form-label">Local Folder Path</label>
-                    <input class="form-input" type="text" id="projectFolderPath" placeholder="C:\Users\Super\Documents\Project Folder">
+                    <input class="form-input" type="text" id="projectFolderPath" placeholder="C:\Users\YourName\Documents\Project Folder">
                 </div>
                 <div class="form-group">
                     <label class="form-label">Cloud Folder Link</label>
@@ -965,104 +965,7 @@
 
 const EMOJIS = ['🌿','🗺️','📦','🎯','📧','🎓','🏠','📹','💡','🔬','💼','🚀','🌍','🧠','⚡','🎨','📊','🔧','🌐','💰'];
 
-const DEFAULT_PROJECTS = [
-    {
-        id: 'p1',
-        name: 'Pisatahua / Sustainable Bolivia',
-        icon: '🌿',
-        status: 'Active — No memory set',
-        next: 'Define next action',
-        link: '',
-        priority: 'high',
-        progress: 0,
-        notes: '',
-        updatedAt: null
-    },
-    {
-        id: 'p2',
-        name: 'Knowledge + Research Vault',
-        icon: '🔬',
-        status: 'Active — No memory set',
-        next: 'Define next action',
-        link: '',
-        priority: 'medium',
-        progress: 0,
-        notes: '',
-        updatedAt: null
-    },
-    {
-        id: 'p3',
-        name: 'Reseller Operation Command Centre',
-        icon: '📦',
-        status: 'Active — No memory set',
-        next: 'Define next action',
-        link: '',
-        priority: 'high',
-        progress: 0,
-        notes: '',
-        updatedAt: null
-    },
-    {
-        id: 'p4',
-        name: 'Veil Cartography',
-        icon: '🗺️',
-        status: 'Active — No memory set',
-        next: 'Define next action',
-        link: '',
-        priority: 'medium',
-        progress: 0,
-        notes: '',
-        updatedAt: null
-    },
-    {
-        id: 'p5',
-        name: 'Email Manager / AI Operations System',
-        icon: '📧',
-        status: 'Active — No memory set',
-        next: 'Define next action',
-        link: '',
-        priority: 'high',
-        progress: 0,
-        notes: '',
-        updatedAt: null
-    },
-    {
-        id: 'p6',
-        name: 'Course + Digital Product Ecosystem',
-        icon: '🎓',
-        status: 'Active — No memory set',
-        next: 'Define next action',
-        link: '',
-        priority: 'medium',
-        progress: 0,
-        notes: '',
-        updatedAt: null
-    },
-    {
-        id: 'p7',
-        name: 'Personal Life Infrastructure',
-        icon: '🏠',
-        status: 'Active — No memory set',
-        next: 'Define next action',
-        link: '',
-        priority: 'medium',
-        progress: 0,
-        notes: '',
-        updatedAt: null
-    },
-    {
-        id: 'p8',
-        name: 'Content Engine System',
-        icon: '📹',
-        status: 'Active — No memory set',
-        next: 'Define next action',
-        link: '',
-        priority: 'high',
-        progress: 0,
-        notes: '',
-        updatedAt: null
-    }
-];
+const DEFAULT_PROJECTS = [];
 
 let projects = [];
 let currentId = null;
