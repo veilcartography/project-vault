@@ -13,12 +13,13 @@ In progress.
 - README.md updated into a Welcome Back landing page.
 - PROJECT_MANIFEST.md created.
 - BACKLOG.md created.
+- `handoffs/LATEST.md` created as the canonical handoff pointer.
+- `docs/Protocol.md` updated with the required startup recovery sequence.
 
 ## Next Milestone
 Create the remaining repository structure:
 - NEXT_ACTION.md
 - docs/Architecture.md
-- docs/Protocol.md
 - docs/Decisions.md
 - handoffs/README.md
 - prompts/chatgpt.md
