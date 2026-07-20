@@ -1,31 +1,27 @@
 # Current Status
 
 ## Current Project
-RC2 Repository Foundation
+AI Operating System — Repository Migration
+
+## Current Phase
+Discovery & Curation — COMPLETE. Ready for Migration Execution.
 
 ## Current Objective
-Create the external memory structure so the project can be resumed quickly after any gap.
-
-## Status
-In progress.
+Migrate curated project files into the repository as the single source of truth, then shift from migration to active project work.
 
 ## Last Completed
-- README.md updated into a Welcome Back landing page.
-- PROJECT_MANIFEST.md created.
-- BACKLOG.md created.
+- Repository connected to Claude (read/write) via a GitHub Desktop clone.
+- Batch 1 migrated: 10 persona + project-clarity core files now in `apps/knowledge/`.
+- Session handoff saved to `apps/handoffs/2026-07-20-repo-migration-handoff.md`.
+- Recovery audit run: refreshed the stale status files so the repo can be recovered without chat memory.
+- Write model set: Claude is the sole writer of this repo (see `docs/Protocol.md` + `docs/Decisions.md`).
 
 ## Next Milestone
-Create the remaining repository structure:
-- NEXT_ACTION.md
-- docs/Architecture.md
-- docs/Protocol.md
-- docs/Decisions.md
-- handoffs/README.md
-- prompts/chatgpt.md
-- prompts/codex.md
+Run the curated migration sweep in one pass:
+`02_AI Tools → 04_AI Onboarding Map → 09_Veil Cartography → 13_Portfolio Packaging → Reseller Inventory`.
 
 ## Blockers
-None identified.
+- Claude's Linux sandbox is intermittently unavailable (Anthropic-side), which blocks the automated bulk-copy pass. Manual drag-drop works in the meantime.
 
 ## Notes
-This file should always reflect the current state of the project in plain language.
+This file reflects the real current state in plain language. Only Claude edits it.
