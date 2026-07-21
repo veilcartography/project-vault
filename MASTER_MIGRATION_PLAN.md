@@ -26,7 +26,6 @@ apps/projects/products/             AI Email Assistant, Gumroad, business plans
 apps/projects/dreamy-geek/          reseller ops manual, workflow, Facebook content
 apps/projects/gnostic-course/       course product: Module 1–8, workbooks, TTS scripts
 apps/projects/pisatahua/            retreat safety, dieta/meal guides, marketing, blueprint
-apps/projects/supreme-auctions/     MCOL claim + evidence (SENSITIVE — see note)
 apps/projects/business-ideas/       business plans, PESTLE/SWOT, social enterprise
 apps/system-data/                   JSON project exports (immutable backups)
 ```
@@ -166,7 +165,7 @@ Source: `_Projects\Reseller Operations\`  *(~95 files — many are product photo
 **🔄 Review-Duplicate — inventory spreadsheets (keep ONE current master, archive the rest)**
 new master.xlsx · Full_Master_Inventory_Export.xlsx · Final_Inventory_Template.xlsx · dreamy-deals-reseller-inventory-recovered-*.xlsx · DreamyDealsLeedsUK_Multi-Platform_*.xlsx (×2) · listings_tracker_FIXED.xlsx · auction_deal_tracker.xlsx + (1) · Inventory_Sync_Report.xlsx · diligence_tracker_tasks.xlsx · ai_digital_tools_tracker.xlsx · LPS ALBUMS.xlsx · the 4 `lots titles retail...` CSVs · RETAIL LINKS (1).csv · traciew2025-collection csv
 
-**⚖️ Supreme Auctions (your live MCOL claim) → `apps/projects/supreme-auctions/` — SENSITIVE, private repo only, confirm first**
+**⚖️ Supreme Auctions (your live MCOL claim) → Tee's existing LOCKED/secure folder — do NOT put in the repo (live litigation material)**
 my response to supreme.pdf · MCOL-Money-Claim-Online-*.pdf · A Battle from the Hospital Bed*.docx · A Leap of Faith*.docx · Outlook email from james atk.pdf · PAID Copy.pdf · REPLY Copy.pdf · SALE_17806_IB883034.pdf · stock parent 1 (1)review(lots).pdf · Supreme_Auctions_Timeline_v2.html
 
 **🗑️ Local-only — do not move:** all `.webp/.png/.jpg` product images (~45) · Vinted…mp4 · LotsWon_*.pdf · vinted.pdf · invoice_final.xlsx · daily dump.url · reseller.one · reseller_hq_workflow.png
@@ -190,7 +189,7 @@ Word Magic set · Esoteric Content Strategy / Pillars / Clusters docs · CORE CO
 
 ## MIG-012 · Pisatahua / Bolivia → `apps/projects/pisatahua/`
 Sources: `_Projects\Pisatahua Ayahuasca Content\` + `\Pisatahua Blueprint and Journey Docs\`
-**⚠️ These two folders heavily overlap — ~10 files exist in both. Consolidate to one.**
+**⚠️ These two folders heavily overlap — ~10 files exist in both. Take one copy of each into `apps/projects/pisatahua/` (either source is fine).**
 
 **⭐ Move — strategy/blueprint**
 PISATAHUA  EXECUTIVE STRATEGY SUMMARY.docx · Pisatahua_2026_Jungle_Blueprint.pdf · Pisatahua_Safety_Ecosystem.pdf · Pisatahua_Comprehensive_Marketing_Plan_2026.docx · Pisatahua_Branding_Analysis.pdf · ✅ Action Plan for Sustainable Bolivia.docx · Pisatahua_Formatted_OnePager.docx · Pisatahua_Hybrid_With_CutPoint.docx · LOG.md
