@@ -1,0 +1,39 @@
+{
+  "id": "01",
+  "project_name": "Veil Cartography / Gnostic System",
+  "vault_project": "Veil Cartography",
+  "status": "active",
+  "memory": {
+    "what_this_project_is": "Veil Cartography is the umbrella brand for Gnostic / esoteric content, hidden-knowledge mapping, and related media. It includes social channels and may include a web app or oracle-style tool.",
+    "named_assets": [
+      "Veil Cartography — umbrella brand and social identity",
+      "Gnostic Oracle — current web app concept (possible rename: Field Cartography Oracle)",
+      "Social platforms: YouTube, TikTok, Instagram, Facebook"
+    ],
+    "purpose": [
+      "Map hidden knowledge",
+      "Build a Gnostic library / content system",
+      "Turn esoteric research into structured, publishable material",
+      "Connect content work to AI-assisted research and database workflows"
+    ],
+    "decisions_needed": [
+      "Keep Gnostic Oracle or rename to Field Cartography Oracle?",
+      "Is the oracle a content product, research tool, lead magnet, or public web app?",
+      "Which database holds: source texts, symbols/concepts, content ideas, published posts, scripts/essays?"
+    ],
+    "database_fields": [
+      "Title",
+      "Topic/Symbol/Theme",
+      "Source Type",
+      "Platform",
+      "Content Status",
+      "Summary",
+      "Key Insight",
+      "Related Project",
+      "Next Action",
+      "Publish Date",
+      "Links/References"
+    ],
+    "next_action": "Decide naming → define content categories → connect to content database"
+  }
+}

@@ -1,0 +1,27 @@
+To share your custom AI Onboarding Discovery Map tool on Facebook, it helps to understand what you can and cannot share directly. Because this is a standalone HTML file that runs entirely on your local computer or phone, Facebook cannot host the interactive app itself. However, you have two excellent options depending on what your true intent is: Option A if you want to show off your personal AI results, or Option B if you want to share the blank tool so your friends can use it too!
+Option A: Share Your Personal Playbook Results
+If you just want to post the text results that the AI generated for you to your Facebook feed, do this:
+	1. Look at the bottom of your generated playbook within the app and click the 📋 Copy Playbook button.
+	2. Open Facebook on your device and click into the "What's on your mind?" text area.
+	3. Right-click (or long-press on mobile) and select Paste to drop the strategy text directly into your post.
+	4. Add an encouraging introduction for your friends like:
+"Just ran my daily routine through an AI Discovery coach to optimize my chaotic schedule—here is the game plan it gave me to win back my weekends! 💚"
+	5. Click Post.
+Option B: Share the Interactive App so Friends Can Use It
+If you want your friends to be able to open the file and map out their own routines, you need to store the code somewhere online so Facebook can link to it.
+Method 1: The Zero-Tech Upload (Google Drive / OneDrive)
+	1. Upload your busy_mum_ai_intake.html file into your personal Google Drive or Microsoft OneDrive.
+	2. Right-click the file in your cloud storage, select Share, and make sure the permissions are set to "Anyone with the link can view".
+	3. Copy that link.
+	4. Paste that link directly into your Facebook post with an explanation:
+"Hey everyone! I'm using this free, private digital workspace to help bust through daily bottlenecks and plan tasks. No tracking or ads. Download this file from my link, double-click it on your desktop, and let it build a custom AI strategy playbook for you!"
+Method 2: The Pro-Tech One-Click Link (GitHub Gist)
+If you want them to be able to click a button and see it running instantly as a real website without downloading anything:
+	1. Go to gist.github.com (a free tool for sharing code).
+	2. Open your busy_mum_ai_intake.html file in Notepad, press Ctrl + A to highlight everything, and copy it.
+	3. Paste the code into the big text box on the Gist website. Name the file exactly index.html.
+	4. Click Create Secret Gist or Create Public Gist.
+	5. Once saved, change the URL in your web browser bar from gist.github.com/... to bl.ocks.org/... followed by the code snippet ID, or use a free renderer like htmlpreview.github.io.
+	6. Share that preview link on Facebook so your friends can click it and use the live application right in their mobile browsers!
+
+From <https://gemini.google.com/app/14c8036d719e43d2?utm_source=app_launcher&utm_medium=owned&utm_campaign=base_all> 

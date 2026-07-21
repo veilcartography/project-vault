@@ -1,0 +1,41 @@
+{
+  "id": "10",
+  "project_name": "Dreamy Deals Leeds UK (Full Portfolio Detail)",
+  "vault_project": "Reseller Operation Command Center",
+  "status": "active",
+  "memory": {
+    "sourcing_platforms": [
+      "i-bidder",
+      "John Pye Auctions",
+      "William George"
+    ],
+    "target_items": [
+      "Numatic/Henry vacuums",
+      "Ninja air fryers",
+      "High-demand domestic appliances"
+    ],
+    "decision_rules": {
+      "general_rule": "Final Cost = 2.0x Hammer Bid (absorbs buyers premiums, VAT, base logistics)",
+      "supreme_auctions": "Final Cost = 1.512x Bid + Delivery",
+      "overhead_penalty": "Bulky lots require elevated £30-£50 margin buffer",
+      "e5_lottery_rule": "Safely flags and caps bids on untested top-tier hardware returns"
+    },
+    "system_components": {
+      "notion_os": "Relational database: Invoice Collection → Delivery Processing → Lots → Listings → Sale → Payout",
+      "email_triage": "Custom Power Automate workflow — auto-archives retail noise, extracts high-priority variables into unified inbox task queue",
+      "spreadsheets": [
+        "lots titles retail and image(Master).xlsx",
+        "Stock Data 2026.xlsx"
+      ]
+    },
+    "gumroad_products_to_build": [
+      "Reseller Command Center Notion OS template",
+      "Custom Email Triage Playbook",
+      "The Sourcing Playbook"
+    ],
+    "next_actions": [
+      "Bundle Notion OS templates as commercial product on Gumroad",
+      "Connect invoice/stock spreadsheets to Notion database"
+    ]
+  }
+}

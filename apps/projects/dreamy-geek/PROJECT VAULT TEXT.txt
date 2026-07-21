@@ -1,0 +1,702 @@
+Here’s a **vault-ready detailed description** you can copy into your Projects / Products Vault.
+
+# Reseller HQ — Notion Systems + Agents
+
+## Product / project summary
+
+**Reseller HQ** is a Notion-based operating system for managing a UK reseller business from sourcing to sale. It brings together auction research, AI-assisted buying decisions, lot intake, invoice tracking, listing preparation, sales-channel management, platform notifications, and daily email review into one structured workflow.
+
+The core system is built around a **Lot-first workflow**: every won auction lot becomes the source-of-truth record, then invoices and listings connect back to that lot. This prevents scattered information, duplicate cost entry, and lost product context. The workflow is documented as **Lots → Invoices → Listings** and is controlled through the **Reseller Command Center**. [[1]](https://app.notion.com/p/Reseller-Command-Center-3041fbe6474681139194c3b669dde788?pvs=21)[[2]](https://app.notion.com/p/System-Overview-Lots-Invoices-Listings-7ed836f9613f4d72a68055b36945afba?pvs=21)[[3]](https://app.notion.com/p/Reseller-Workflow-Quick-Guide-Lots-Invoice-Listings-873242293ee3490c808cd1eafdec432d?pvs=21)
+
+Reseller HQ is not just a tracker. It is designed as a repeatable, AI-supported business system that can become a future sellable template or digital product.
+
+---
+
+## 1. Reseller Command Center
+
+The **Reseller Command Center** is the main navigation hub for reseller operations. It acts as the front door for the whole workflow and keeps the daily process simple: **Lots → Invoice → Listings**. [[1]](https://app.notion.com/p/Reseller-Command-Center-3041fbe6474681139194c3b669dde788?pvs=21)
+
+Its purpose is to stop reseller admin becoming scattered across emails, screenshots, invoices, marketplace tabs, auction sites, and notes. Instead, it gives one place to start and one route through the process.
+
+### Main functions
+
+- Holds the top-level workflow checklist.
+- Links to each operational database.
+- Separates new stock intake, invoice processing, and listing creation.
+- Stores workflow files such as invoices, CSVs, screenshots, and source documents.
+- Links to guidance pages, VA instructions, and listing assistant resources.
+
+### Core rule
+
+The golden rule is: **Lot-first. Links now, costs later.**
+
+This means:
+
+1. Create one lot row per won auction lot.
+2. Capture auction and retail links first.
+3. Add invoice data later when the invoice arrives.
+4. Create one listing row per platform once the lot is ready to sell.
+
+---
+
+## 2. Lots → Invoices → Listings system
+
+The main reseller workflow is a three-database system designed to keep stock, costs, and listings connected. [[2]](https://app.notion.com/p/System-Overview-Lots-Invoices-Listings-7ed836f9613f4d72a68055b36945afba?pvs=21)
+
+### A. Lots / Master Intake
+
+The **Lots / Master Intake** database is the source of truth for everything won at auction. Each row represents one auction lot.
+
+It stores:
+
+- Lot title
+- Auction house
+- Lot number
+- Auction URL
+- Retail research URLs
+- Screenshots or photos
+- Intake status
+- Hammer price
+- Final lot cost
+- Item count
+- Unit cost
+- Fees and tax
+- Related invoice
+- Related listings
+
+The system intentionally separates **links captured** from **costs confirmed** so that you do not need to fill every field at once.
+
+### B. Financials & Invoices
+
+The **Financials & Invoices** database stores one row per invoice batch. One invoice can link to many lots. [[2]](https://app.notion.com/p/System-Overview-Lots-Invoices-Listings-7ed836f9613f4d72a68055b36945afba?pvs=21)[[3]](https://app.notion.com/p/Reseller-Workflow-Quick-Guide-Lots-Invoice-Listings-873242293ee3490c808cd1eafdec432d?pvs=21)
+
+It stores:
+
+- Invoice number
+- Invoice date
+- Auction house
+- Total amount
+- Invoice PDF / screenshot
+- Related lots
+
+The invoice database is treated as a batch wrapper, not the main place for editing costs. The cost inputs should live on the Lot records to avoid duplication and confusion.
+
+### C. Sales Tracker
+
+The **Sales Tracker** database stores one row per platform listing. A single lot can generate multiple sales-channel rows.
+
+Example:
+
+- One Vinted listing
+- One eBay listing
+- One Facebook Marketplace listing
+- One Gumtree listing
+
+Each listing links back to the original lot, so pricing, photos, descriptions, and sales outcomes stay connected to the source stock.
+
+The Sales Tracker can track:
+
+- Platform
+- Listing title
+- Draft stage
+- Status
+- Price
+- Listing URL
+- Seller photos
+- Buyer-info images
+- Platform rules
+- Notes
+- Related lot
+
+---
+
+## 3. Reseller Workflow Quick Guide
+
+The **Reseller Workflow — Quick Guide** is the simple operating manual for the whole reseller system. It explains what to do at each stage and prevents over-filling databases too early. [[3]](https://app.notion.com/p/Reseller-Workflow-Quick-Guide-Lots-Invoice-Listings-873242293ee3490c808cd1eafdec432d?pvs=21)
+
+### Step 1 — Add won lots
+
+Minimum fields:
+
+- Lot title
+- Auction page URL
+- Main retail URL
+- Additional retail URLs
+- Intake status = Links captured
+
+Do not fill yet:
+
+- Hammer price
+- Final lot cost
+- Item count
+
+### Step 2 — Add invoice
+
+Create one invoice row per invoice, upload the invoice file, then link all relevant lots.
+
+Then update each lot with:
+
+- Hammer price
+- Final lot cost
+- Item count
+
+The system then calculates:
+
+- Unit cost
+- Fees + tax
+- Estimated cost formulas
+
+### Step 3 — Create listings
+
+Create one Sales Tracker row per platform.
+
+Listing rows track:
+
+- Platform
+- Draft status
+- Photos
+- Price
+- Listing URL
+- Notes
+- Platform-specific rules
+
+---
+
+## 4. Auction AI System
+
+The **Auction AI System** is the buying-decision layer of Reseller HQ. It is designed to help assess auction opportunities before bidding, so purchases are disciplined rather than emotional. [[4]](https://app.notion.com/p/Auction-AI-System-3601fbe64746804b8e16d46aaf335ebc?pvs=21)
+
+It supports the sourcing stage before stock enters the Lots → Invoices → Listings workflow.
+
+### Purpose
+
+The Auction AI System helps decide whether to:
+
+- **Bid**
+- **Watch**
+- **Ignore**
+
+It uses profit rules, delivery estimates, storage constraints, and resale value to protect cash and avoid low-margin purchases.
+
+### Daily workflow
+
+1. Check incoming Notion auction alerts.
+2. Use Highlight or browser assistance to scan deals.
+3. Review promising lots.
+4. Send key deals to the reseller decision agent / AI workflow.
+5. Decide: bid, watch, or ignore.
+6. Log useful deals and patterns.
+7. Execute only on high-confidence opportunities.
+
+### Decision rules
+
+The system includes:
+
+- Profit thresholds
+- Delivery-cost rules
+- Collection vs delivery comparisons
+- Storage rules
+- Energy vs value scoring
+- High-confidence testing mode
+- Pattern logging
+- Mistake logging
+- Deal-learning loops
+
+### Product potential
+
+This system is already structured like a sellable product:
+
+- Notion template
+- Excel / tracker companion
+- AI reseller prompt pack
+- Auction decision guide
+- Deal-scoring dashboard
+
+---
+
+## 5. Auction Command Center — Alert Processing
+
+The **Auction Command Center — Alert Processing** page is the live reference for handling auction alerts and outbid notifications. [[5]](https://app.notion.com/p/Auction-Command-Center-Alert-Processing-15b40f90096e4addae60c3c718554c4e?pvs=21)
+
+It turns messy auction emails into fast **Bid / Avoid / Re-bid / Walk Away** decisions.
+
+### What it handles
+
+- New auction alerts
+- Outbid notifications
+- Ending-soon opportunities
+- High-brand low-bid checks
+- Auction-house logistics
+- Collection vs delivery calculations
+- Profit margin checks
+
+### Alert processing logic
+
+The system uses three main checks:
+
+1. **Outbid alerts**  
+    
+    Check whether the new bid still leaves a £25–£50 profit margin.
+    
+2. **New alerts**  
+    
+    Cross-reference the item with a lookout list and calculate the max bid.
+    
+3. **£5 lottery check**  
+    
+    If a strong brand is ending soon and still near £5, flag it as a low-risk opportunity.
+    
+
+### Outbid decision matrix
+
+- Under max bid → **Re-bid**
+- At max bid → **Last call**
+- Over max bid → **Walk away**
+
+### Supporting databases
+
+The page includes:
+
+- **Auction Alert Log**
+- **Outbid Tracker**
+
+These are used to capture and process alert data as structured records.
+
+---
+
+## 6. Platform Activity Log
+
+The **Platform Activity Log** captures marketplace activity after items are listed. It is used for messages, offers, favourites, sales, payouts, and platform notifications. [[6]](https://app.notion.com/p/Systems-Overview-Notion-Agents-Databases-736b9e6cb77d4070883c00bd45a30ad7?pvs=21)[[1]](https://app.notion.com/p/Reseller-Command-Center-3041fbe6474681139194c3b669dde788?pvs=21)
+
+### Purpose
+
+Instead of relying on email memory, platform activity becomes structured operational data.
+
+It can track:
+
+- Marketplace
+- Event type
+- Item title
+- Buyer / sender
+- Email date
+- Action needed
+- Notes
+- Related listing
+- Related task
+
+### Supported platforms
+
+The system references marketplace activity from:
+
+- Vinted
+- eBay
+- Facebook Marketplace
+- Gumtree
+- Nextdoor
+- Other reseller platforms as needed
+
+---
+
+## 7. Workflow Files system
+
+The **Workflow Files** area stores supporting files for reseller operations, especially invoices, CSVs, screenshots, and source files. [[1]](https://app.notion.com/p/Reseller-Command-Center-3041fbe6474681139194c3b669dde788?pvs=21)
+
+### Purpose
+
+It prevents the Reseller Command Center from becoming cluttered while still keeping source material close to the workflow.
+
+Files can also be attached directly to:
+
+- Lot records
+- Invoice records
+- Listing records
+
+This creates both a central file store and record-level evidence.
+
+---
+
+## 8. Listings Assistant Hub
+
+The **Listings Assistant Hub** supports the listing-preparation part of Reseller HQ. It gives guidance for turning lot and invoice data into marketplace-ready listings. [[7]](https://app.notion.com/p/Listings-Assistant-Hub-a39b17e126b34849a95690592757e126?pvs=21)
+
+### Purpose
+
+It helps move from “I bought this” to “this is ready to sell.”
+
+It supports:
+
+- Creating one lot row per auction lot.
+- Linking invoice batches to lots.
+- Creating listing rows per platform.
+- Keeping lots and listings connected.
+- Preparing product information for marketplace listing.
+
+### Listing workflow support
+
+The listing assistant process helps with:
+
+- Product title
+- Product description
+- Photos
+- Price
+- Platform choice
+- Listing URL
+- Buyer-facing details
+- Marketplace-specific rules
+
+---
+
+## 9. VA Brief — Daily Sales Ops
+
+The **VA Brief — Daily Sales Ops** page is a simplified operating guide for anyone helping with sales admin. [[8]](https://app.notion.com/p/VA-Brief-Daily-Sales-Ops-6a2c6bf89ebe4e2ea793856c9f3ae2a4?pvs=21)
+
+### Purpose
+
+It explains the daily sales operations without requiring the helper to understand the whole workspace.
+
+It can be used for:
+
+- Virtual assistant onboarding
+- Delegating listing checks
+- Clearing platform activity
+- Reviewing sales tasks
+- Keeping instructions consistent
+
+This makes the system more scalable because someone else can help without needing to decode the entire Notion setup.
+
+---
+
+## 10. Email Manager Agent
+
+The **Email Manager** is the main active custom agent connected to Reseller HQ. It is the only daily auto-running agent in the system. [[6]](https://app.notion.com/p/Systems-Overview-Notion-Agents-Databases-736b9e6cb77d4070883c00bd45a30ad7?pvs=21)
+
+### Trigger
+
+- Runs daily at **09:00 Europe/London**.
+- Checks the selected reseller inbox setup.
+- Other accounts can be forwarded or imported into the main mailbox.
+
+### Main output
+
+It creates a daily page called:
+
+**📬 Daily Email Summary — YYYY-MM-DD**
+
+This daily summary is designed as a command brief, not just an email digest.
+
+### What it extracts
+
+The Email Manager looks for:
+
+- Auction alerts
+- Outbid notifications
+- Buyer messages
+- Marketplace notifications
+- Finance and subscription emails
+- Security alerts
+- Replies needed
+- Deadlines
+- Platform activity
+- Important updates
+
+### Daily summary sections
+
+The summary groups email into decision-friendly sections such as:
+
+- Do Today — Top 3
+- Needs Reply / Action Required
+- Finance / Subscription
+- Verify / Review
+- Vinted and priority platforms
+- Auto-archived
+- Come Back Later
+- Possible Junk
+
+### Credit-saving behaviour
+
+The agent is designed to minimise unnecessary AI use:
+
+- Scans at thread level first.
+- Deep-reads only important emails.
+- Avoids deep-reading low-priority newsletters and marketing digests.
+
+### Retention rule
+
+Daily Email Summary pages are archived after 7 days, not deleted. This keeps the dashboard clean while preserving history.
+
+---
+
+## 11. Today Command Brief system
+
+The **Today — Command Brief** is the current-day summary page used as a daily command centre. [[6]](https://app.notion.com/p/Systems-Overview-Notion-Agents-Databases-736b9e6cb77d4070883c00bd45a30ad7?pvs=21)
+
+### Purpose
+
+It turns the email summary and active tasks into a prioritised daily operating brief.
+
+Before overwriting the current brief, the previous one is copied into an archive page, creating a daily history without cluttering the dashboard.
+
+### Use case
+
+The Today Command Brief is useful for:
+
+- Knowing what matters today.
+- Seeing urgent emails and reseller actions.
+- Connecting inbox signals to tasks.
+- Avoiding decision fatigue.
+- Keeping one current page instead of dozens of daily fragments.
+
+---
+
+## 12. Memtime Notion Ops Agent
+
+The **Memtime Notion Ops Agent** is a manual-only custom agent. [[6]](https://app.notion.com/p/Systems-Overview-Notion-Agents-Databases-736b9e6cb77d4070883c00bd45a30ad7?pvs=21)
+
+### Trigger
+
+- Runs only when mentioned.
+- Automatic triggers are disabled.
+
+### Purpose
+
+It is used as an on-demand operations summariser and consistency checker.
+
+It can:
+
+- Turn daily summaries and tasks into a command brief.
+- Identify what changed.
+- Highlight what to do first.
+- Review what is due this week.
+- Check whether databases and properties are mapped consistently.
+
+### Role in Reseller HQ
+
+This agent helps maintain operational structure without running automatically or using unnecessary credits.
+
+---
+
+## 13. Reseller1 / Highlight workflow
+
+The workspace also references a **Reseller1 + Highlight workflow**, where Reseller1 acts as a chat-based decision engine and Highlight supports browser-based scanning. [[9]](https://app.notion.com/p/Pinned-Reseller1-Highlight-workflow-decide-Notion-Deal-Inbox-setup-da637d2545f8415b98bbb94c4fbbd779?pvs=21)[[4]](https://app.notion.com/p/Auction-AI-System-3601fbe64746804b8e16d46aaf335ebc?pvs=21)
+
+### Purpose
+
+This sits at the pre-purchase stage of Reseller HQ.
+
+It helps:
+
+- Scan auction pages.
+- Identify possible deals.
+- Send key deals into an AI decision process.
+- Decide whether to bid, watch, or ignore.
+- Potentially feed a future Deal Inbox.
+
+### Possible future database
+
+A **Deal Inbox** could track:
+
+- New
+- Outbid
+- Winning
+- Won
+- Ignored
+
+This would formalise the buying-decision layer before lots enter the main intake database.
+
+---
+
+## 14. Digital Tools + Subscriptions system
+
+The reseller workflow is connected to a broader **Digital Tools + Subscriptions** system. [[6]](https://app.notion.com/p/Systems-Overview-Notion-Agents-Databases-736b9e6cb77d4070883c00bd45a30ad7?pvs=21)
+
+### Purpose
+
+This system tracks the apps, AI tools, browser extensions, subscriptions, and accounts used to run the business.
+
+It includes:
+
+- Digital Activity Dashboard
+- Digital Activity Log
+- Digital Products & Subscriptions
+- Product Accounts
+
+### Why it matters for Reseller HQ
+
+Reseller HQ depends on several digital tools, such as:
+
+- Notion
+- Notion AI
+- Email tools
+- Highlight
+- Perplexity
+- Manus
+- Marketplace accounts
+- Browser extensions
+- Auction platforms
+
+Tracking tools and subscriptions prevents:
+
+- Forgotten trials
+- Duplicate tools
+- Unclear logins
+- Subscription waste
+- Workflow confusion
+
+---
+
+## 15. Task + Activity Dashboard
+
+The **Task + Activity Dashboard** is the wider daily control panel that connects reseller work to personal admin, email summaries, weekly reviews, and task tracking. [[6]](https://app.notion.com/p/Systems-Overview-Notion-Agents-Databases-736b9e6cb77d4070883c00bd45a30ad7?pvs=21)
+
+### Purpose
+
+It prevents Reseller HQ from becoming isolated from daily life and other projects.
+
+It holds:
+
+- My Tasks
+- Weekly Reviews
+- Daily Email Summary pages
+- Today Command Brief
+- Digital activity records
+- Current focus areas
+
+### Role in Reseller HQ
+
+When the Email Manager detects reseller-related actions, those can become:
+
+- Tasks
+- Review items
+- Platform activity records
+- Daily priorities
+
+This makes Reseller HQ part of the daily command system rather than a separate forgotten project.
+
+---
+
+## 16. My Tasks database
+
+The **My Tasks** database is the main execution layer. [[6]](https://app.notion.com/p/Systems-Overview-Notion-Agents-Databases-736b9e6cb77d4070883c00bd45a30ad7?pvs=21)
+
+### Purpose
+
+It captures work across:
+
+- Reseller operations
+- Digital tools
+- Admin
+- Personal tasks
+- Project review
+- Monetisation work
+
+### Reseller-related task examples
+
+- Review auction alerts.
+- Process invoice.
+- Create listing drafts.
+- Take photos.
+- Reply to buyer.
+- Check platform messages.
+- Reconcile sales tracker.
+- Review outbid alerts.
+- Research comps.
+- Update lot costs.
+
+### Useful fields
+
+The task system uses:
+
+- Status
+- Due date
+- Completed date
+- Notes
+- Parent / subtask relation
+- Current focus tags
+
+---
+
+## 17. Manus / external AI support
+
+The workspace references **Manus** as an external AI/reseller operations manager supporting the Reseller HQ build. [[10]](https://app.notion.com/p/my-profiles-and-accounts-3061fbe6474680e59c49cc7b0f3be23e?pvs=21)[[11]](https://app.notion.com/p/Manus-Notion-Build-in-public-story-article-X-LinkedIn-490f3964f2614a639a414cd12e38737c?pvs=21)
+
+### Role
+
+Manus appears to have been used to help design, transfer, and document parts of the Reseller HQ workflow, including the Lots → Invoices → Listings structure.
+
+### Current positioning
+
+Manus is not the core system itself. It is better described as a supporting AI build assistant / external operations support tool used during development.
+
+---
+
+## 18. Productisation angle
+
+Reseller HQ has strong potential as a digital product because it combines a practical business workflow with AI-assisted operations.
+
+### Possible product names
+
+- **Reseller HQ**
+- **AI Reseller Command Center**
+- **Auction-to-Listing OS**
+- **Lots → Invoices → Listings Notion System**
+- **AI Auction Buying + Reseller Ops Template**
+
+### Product promise
+
+A Notion system for resellers who need to:
+
+- Track auction lots from purchase to listing.
+- Stop losing invoice and cost information.
+- Use AI to make better buying decisions.
+- Turn email alerts into structured actions.
+- Manage multiple sales channels.
+- Keep marketplace messages and sales activity organised.
+- Build a repeatable reseller workflow instead of relying on memory.
+
+### Target users
+
+- UK resellers
+- Auction buyers
+- Vinted / eBay / Facebook Marketplace sellers
+- Side-hustle sellers
+- People buying returns / liquidation stock
+- Resellers with ADHD, memory issues, or overloaded admin
+- Small teams using a VA or helper
+- AI-curious resellers who need a practical system
+
+### What could be included in a sellable version
+
+- Reseller Command Center template
+- Lots / Master Intake database
+- Invoice database
+- Sales Tracker database
+- Platform Activity Log
+- Auction Alert Log
+- Outbid Tracker
+- Workflow Files page
+- Listing Assistant Hub
+- VA Brief
+- Auction AI prompts
+- Buying decision playbook
+- Daily email summary workflow
+- Setup guide
+- Example records
+- SOPs for each stage
+- “Start here” page
+- Training videos or screenshots
+
+---
+
+## 19. Clean product description
+
+**Reseller HQ is an AI-supported Notion operating system for managing reseller stock from auction alerts to live marketplace listings. It gives resellers a structured workflow for capturing won lots, linking invoices, calculating costs, preparing listings, tracking platform activity, and reviewing daily email signals. The system is built around a Lot-first model, meaning every invoice, listing, photo, message, and sale connects back to the original auction lot.**
+
+**The system includes a Reseller Command Center, Lots / Master Intake database, Financials & Invoices database, Sales Tracker, Platform Activity Log, Auction Alert Log, Outbid Tracker, Workflow Files hub, Listing Assistant Hub, and VA Brief. It also connects to AI-supported workflows such as the Auction AI System, Email Manager Agent, Today Command Brief, and manual operations agents. Together, these turn reseller chaos into a repeatable, reviewable, scalable business process.**
+
+---
+
+## 20. Short version for product vault card
+
+**Reseller HQ**  
+
+An AI-supported Notion command center for UK reseller operations. It manages the full workflow from auction alerts and buying decisions through lot intake, invoice tracking, cost calculation, listing preparation, sales-channel tracking, platform messages, and daily email summaries. Built around a Lot-first system, it keeps every invoice, listing, and sale connected to the original auction lot. Includes reseller databases, SOPs, AI prompts, daily email agent workflows, alert processing, outbid tracking, and VA-ready operating guides.

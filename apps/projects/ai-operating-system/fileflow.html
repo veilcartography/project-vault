@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>FileFlow</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,sans-serif;background:#0d0d12;color:#dddde8;height:100vh;display:flex;flex-direction:column;overflow:hidden;font-size:13px}
+button{cursor:pointer;border-radius:6px;padding:5px 11px;font-size:12px;font-weight:500;transition:opacity .1s;border:none}
+button:disabled{opacity:.35;cursor:not-allowed}
+input[type=text],input[type=search]{background:#0d0d12;border:1px solid #222230;border-radius:6px;padding:5px 10px;color:#dddde8;font-size:12px;outline:none}
+input[type=checkbox]{cursor:pointer;accent-color:#8b5cf6}
+::-webkit-scrollbar{width:7px;height:7px}
+::-webkit-scrollbar-track{background:#0d0d12}
+::-webkit-scrollbar-thumb{background:#252535;border-radius:4px}
+#header{background:#151520;border-bottom:1px solid #222230;padding:9px 14px;display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+#logo{font-weight:700;font-size:15px;color:#8b5cf6;margin-right:6px;letter-spacing:-.3px}
+#breadcrumb{background:#111119;border-bottom:1px solid #1c1c28;padding:5px 14px;display:flex;gap:3px;align-items:center;flex-wrap:wrap;min-height:28px;font-size:13px}
+.bc-sep{color:#333344;margin:0 1px}
+.bc-part{cursor:pointer;color:#6b6b88;padding:1px 4px;border-radius:4px}
+.bc-part:hover{color:#c4b5fd}
+.bc-part.active{color:#a78bfa;font-weight:600;cursor:default}
+.bc-part.active:hover{color:#a78bfa}
+#errbar{background:#2d0f0f;color:#fca5a5;padding:7px 14px;display:flex;justify-content:space-between;align-items:center;font-size:12px}
+#content{flex:1;overflow:auto}
+#empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:12px;color:#3a3a55;padding-bottom:40px}
+#empty .ico{font-size:56px}
+#empty h2{font-size:17px;font-weight:600;color:#5a5a7a}
+#empty p{font-size:12px}
+#empty small{font-size:11px;color:#2a2a3a;margin-top:4px}
+#loading{display:flex;align-items:center;justify-content:center;height:200px;color:#5a5a7a;gap:8px}
+#no-results{text-align:center;padding:40px;color:#3a3a55}
+table{width:100%;border-collapse:collapse}
+thead{position:sticky;top:0;background:#111119;z-index:10}
+th{padding:8px;text-align:left;color:#6b6b88;font-weight:500;border-bottom:1px solid #1c1c28;user-select:none;cursor:pointer}
+th:first-child{cursor:default;width:36px;padding:8px 10px}
+th .arr{color:#8b5cf6}
+tr.file-row{border-bottom:1px solid #141420;transition:background .08s}
+tr.file-row:hover{background:#13131e}
+tr.file-row.selected{background:#1a163a}
+tr.file-row.selected:hover{background:#1e1a40}
+td{padding:6px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+td:first-child{padding:6px 10px;width:36px}
+td.name-cell{max-width:0;width:100%}
+.name-wrap{display:flex;align-items:center;gap:8px}
+.file-icon{font-size:15px;line-height:1;flex-shrink:0}
+.file-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.file-name.dir{color:#c4b5fd;font-weight:500}
+td.size-col{text-align:right;color:#55556a;width:90px}
+td.date-col{text-align:right;color:#55556a;width:130px;padding-right:14px}
+#status{background:#111119;border-top:1px solid #1c1c28;padding:4px 14px;display:flex;gap:14px;color:#55556a;font-size:11px;align-items:center}
+#status .sel-info{color:#8b5cf6}
+#status .kb-hint{margin-left:auto}
+#ctx{position:fixed;background:#1a1a26;border:1px solid #28283a;border-radius:8px;z-index:1000;min-width:164px;box-shadow:0 8px 28px rgba(0,0,0,.6);overflow:hidden}
+.ctx-item{padding:8px 15px;cursor:pointer;color:#dddde8;font-size:13px;transition:background .1s}
+.ctx-item:hover{background:#1e1e2c}
+.ctx-item.danger{color:#f87171}
+.ctx-item.danger:hover{background:#2d1010}
+.ctx-sep{border-top:1px solid #28283a}
+.spin{display:inline-block;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.rename-input{background:#1a1a2e;border:1px solid #8b5cf6;border-radius:4px;color:#dddde8;padding:2px 7px;font-size:13px;flex:1;outline:none;min-width:0}
+.btn-purple{background:#8b5cf620;color:#8b5cf6;border:1px solid #8b5cf644}
+.btn-purple:hover:not(:disabled){background:#8b5cf630}
+.btn-green{background:#22c55e18;color:#22c55e;border:1px solid #22c55e44}
+.btn-green:hover:not(:disabled){background:#22c55e28}
+.btn-red{background:#ef444418;color:#ef4444;border:1px solid #ef444444}
+.btn-red:hover:not(:disabled){background:#ef444428}
+.btn-slate{background:#64748b18;color:#64748b;border:1px solid #64748b44}
+.btn-slate:hover:not(:disabled){background:#64748b28}
+</style>
+</head>
+<body>
+
+<div id="header">
+  <span id="logo">📂 FileFlow</span>
+  <button class="btn-purple" onclick="openRoot()">Open Folder</button>
+  <button class="btn-green" id="btn-new" onclick="newFolder()" style="display:none">＋ Folder</button>
+  <button class="btn-red" id="btn-del" onclick="deleteSelected()" disabled style="display:none">🗑 Delete</button>
+  <button class="btn-slate" id="btn-up" onclick="goUp()" disabled style="display:none">↑ Up</button>
+  <button class="btn-slate" id="btn-ref" onclick="()=>load(currentDir)" style="display:none" onclick="refreshDir()">↺ Refresh</button>
+  <div style="flex:1"></div>
+  <input type="search" id="search" placeholder="Search…" style="width:160px;display:none" oninput="renderEntries()"/>
+</div>
+
+<div id="breadcrumb"></div>
+<div id="errbar" style="display:none"></div>
+
+<div id="content">
+  <div id="empty">
+    <div class="ico">📁</div>
+    <h2>No folder open</h2>
+    <p>Click <b style="color:#8b5cf6">Open Folder</b> to browse your files</p>
+    <small>Keyboard: F2 rename · Del delete · Ctrl+A select all</small>
+  </div>
+  <div id="loading" style="display:none"><span class="spin">⟳</span> Loading…</div>
+  <div id="no-results" style="display:none"></div>
+  <table id="file-table" style="display:none">
+    <thead>
+      <tr>
+        <th><input type="checkbox" id="chk-all" onchange="toggleAll()"/></th>
+        <th onclick="cycleSort('name')">Name <span class="arr" id="arr-name"></span></th>
+        <th onclick="cycleSort('size')" style="text-align:right;width:90px">Size <span class="arr" id="arr-size"></span></th>
+        <th onclick="cycleSort('modified')" style="text-align:right;width:130px;padding-right:14px">Modified <span class="arr" id="arr-modified"></span></th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
+
+<div id="status" style="display:none">
+  <span id="stat-counts"></span>
+  <span id="stat-size"></span>
+  <span class="sel-info" id="stat-sel"></span>
+  <span id="stat-search"></span>
+  <span class="kb-hint">F2 rename · Del delete · Ctrl+A select all</span>
+</div>
+
+<div id="ctx" style="display:none"></div>
+
+<script>
+const EXT_ICONS={pdf:'📄',doc:'📝',docx:'📝',txt:'📃',md:'📃',rtf:'📃',jpg:'🖼️',jpeg:'🖼️',png:'🖼️',gif:'🖼️',webp:'🖼️',svg:'🖼️',bmp:'🖼️',ico:'🖼️',mp4:'🎬',mov:'🎬',avi:'🎬',mkv:'🎬',wmv:'🎬',mp3:'🎵',wav:'🎵',flac:'🎵',aac:'🎵',ogg:'🎵',zip:'🗜️',rar:'🗜️','7z':'🗜️',tar:'🗜️',gz:'🗜️',js:'⚡',ts:'⚡',jsx:'⚡',tsx:'⚡',html:'🌐',css:'🎨',py:'🐍',java:'☕',xls:'📊',xlsx:'📊',csv:'📊',ppt:'📊',pptx:'📊',exe:'⚙️',msi:'⚙️',bat:'⚙️',sh:'⚙️',json:'🔧',xml:'🔧',yaml:'🔧',yml:'🔧',ini:'🔧',cfg:'🔧'};
+const getExt=n=>n.includes('.')?n.split('.').pop().toLowerCase():'';
+const getIcon=(n,k)=>k==='directory'?'📁':(EXT_ICONS[getExt(n)]||'📄');
+const fmtSize=b=>{if(b==null)return'—';if(b<1024)return b+' B';if(b<1048576)return(b/1024).toFixed(1)+' KB';if(b<1073741824)return(b/1048576).toFixed(1)+' MB';return(b/1073741824).toFixed(1)+' GB';};
+const fmtDate=ms=>ms?new Date(ms).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}):'—';
+
+let currentDir=null, pathStack=[], entries=[], selected=new Set();
+let sortBy='name', sortDir=1, renaming=null;
+
+async function readDir(h){
+  const items=[];
+  for await(const [name,handle] of h.entries()){
+    let size=null,modified=null;
+    if(handle.kind==='file'){try{const f=await handle.getFile();size=f.size;modified=f.lastModified;}catch{}}
+    items.push({name,handle,kind:handle.kind,size,modified});
+  }
+  return items;
+}
+
+async function openRoot(){
+  try{
+    const h=await window.showDirectoryPicker({mode:'readwrite'});
+    currentDir=h; pathStack=[{name:h.name,handle:h}];
+    document.getElementById('search').value='';
+    await load(h);
+  }catch(e){if(e.name!=='AbortError')showErr(e.message);}
+}
+
+async function load(h){
+  showView('loading');
+  try{
+    entries=await readDir(h);
+    selected=new Set();
+    showView('table');
+    renderBreadcrumb();
+    renderEntries();
+    updateToolbar();
+    showStatus();
+  }catch(e){showErr(e.message);showView('empty');}
+}
+
+async function enter(item){
+  if(item.kind!=='directory')return;
+  pathStack.push({name:item.name,handle:item.handle});
+  currentDir=item.handle;
+  document.getElementById('search').value='';
+  await load(item.handle);
+}
+
+async function goTo(idx){
+  const s=pathStack.slice(0,idx+1);
+  pathStack=s;
+  currentDir=s[s.length-1].handle;
+  document.getElementById('search').value='';
+  await load(currentDir);
+}
+
+function goUp(){if(pathStack.length>1)goTo(pathStack.length-2);}
+function refreshDir(){if(currentDir)load(currentDir);}
+
+async function newFolder(){
+  const name=prompt('New folder name:');
+  if(!name?.trim())return;
+  try{await currentDir.getDirectoryHandle(name.trim(),{create:true});await load(currentDir);}
+  catch(e){showErr(e.message);}
+}
+
+async function deleteSelected(){
+  const list=[...selected];
+  if(!list.length)return;
+  const preview=list.slice(0,5).join('\n')+(list.length>5?`\n...and ${list.length-5} more`:'');
+  if(!confirm(`Permanently delete ${list.length} item(s)?\n\n${preview}`))return;
+  try{for(const n of list)await currentDir.removeEntry(n,{recursive:true});await load(currentDir);}
+  catch(e){showErr(e.message);}
+}
+
+async function deleteItems(names){
+  const list=[...names];
+  if(!list.length)return;
+  const preview=list.slice(0,5).join('\n')+(list.length>5?`\n...and ${list.length-5} more`:'');
+  if(!confirm(`Permanently delete ${list.length} item(s)?\n\n${preview}`))return;
+  try{for(const n of list)await currentDir.removeEntry(n,{recursive:true});await load(currentDir);}
+  catch(e){showErr(e.message);}
+}
+
+function startRename(name){
+  renaming=name;
+  renderEntries();
+  setTimeout(()=>{
+    const inp=document.getElementById('rename-input');
+    if(inp){inp.focus();inp.select();}
+  },30);
+}
+
+async function commitRename(oldName){
+  const inp=document.getElementById('rename-input');
+  const nv=inp?inp.value.trim():'';
+  if(!nv||nv===oldName){renaming=null;renderEntries();return;}
+  const item=entries.find(e=>e.name===oldName);
+  if(!item){renaming=null;renderEntries();return;}
+  try{
+    if(item.kind==='file'){
+      const oh=await currentDir.getFileHandle(oldName);
+      const f=await oh.getFile();
+      const buf=await f.arrayBuffer();
+      const nh=await currentDir.getFileHandle(nv,{create:true});
+      const w=await nh.createWritable();
+      await w.write(buf);await w.close();
+      await currentDir.removeEntry(oldName);
+    }else{
+      throw new Error('Browser limitation: folders cannot be renamed here. Use Windows Explorer for folders.');
+    }
+    renaming=null;await load(currentDir);
+  }catch(e){showErr(e.message);renaming=null;renderEntries();}
+}
+
+function getFiltered(){
+  const q=document.getElementById('search')?.value.toLowerCase()||'';
+  let list=q?entries.filter(e=>e.name.toLowerCase().includes(q)):entries;
+  return list.slice().sort((a,b)=>{
+    if(a.kind!==b.kind)return a.kind==='directory'?-1:1;
+    let v=0;
+    if(sortBy==='name')v=a.name.localeCompare(b.name,undefined,{sensitivity:'base'});
+    else if(sortBy==='size')v=(a.size||0)-(b.size||0);
+    else if(sortBy==='modified')v=(a.modified||0)-(b.modified||0);
+    return v*sortDir;
+  });
+}
+
+function renderEntries(){
+  const filtered=getFiltered();
+  const tbody=document.getElementById('tbody');
+  const chkAll=document.getElementById('chk-all');
+  if(!filtered.length){
+    const q=document.getElementById('search')?.value;
+    document.getElementById('no-results').textContent=q?`No results for "${q}"`:'This folder is empty';
+    showView('no-results');
+    return;
+  }
+  showView('table');
+  chkAll.checked=filtered.every(e=>selected.has(e.name));
+  tbody.innerHTML='';
+  filtered.forEach(item=>{
+    const tr=document.createElement('tr');
+    tr.className='file-row'+(selected.has(item.name)?' selected':'');
+    tr.ondblclick=()=>enter(item);
+    tr.oncontextmenu=e=>{e.preventDefault();if(!selected.has(item.name))toggleSel(item.name,false);showCtx(e.clientX,e.clientY,item);};
+    tr.onclick=e=>{if(e.target.type==='checkbox')return;if(renaming===item.name)return;toggleSel(item.name,e.ctrlKey||e.metaKey||e.shiftKey);};
+
+    // checkbox
+    const tdChk=document.createElement('td');
+    const chk=document.createElement('input');
+    chk.type='checkbox';chk.checked=selected.has(item.name);
+    chk.onchange=()=>toggleSel(item.name,true);
+    chk.onclick=e=>e.stopPropagation();
+    tdChk.appendChild(chk);tr.appendChild(tdChk);
+
+    // name
+    const tdName=document.createElement('td');
+    tdName.className='name-cell';
+    const wrap=document.createElement('div');wrap.className='name-wrap';
+    const ico=document.createElement('span');ico.className='file-icon';ico.textContent=getIcon(item.name,item.kind);
+    wrap.appendChild(ico);
+    if(renaming===item.name){
+      const inp=document.createElement('input');
+      inp.type='text';inp.id='rename-input';inp.className='rename-input';inp.value=item.name;
+      inp.onblur=()=>commitRename(item.name);
+      inp.onkeydown=e=>{if(e.key==='Enter')commitRename(item.name);if(e.key==='Escape'){renaming=null;renderEntries();}};
+      inp.onclick=e=>e.stopPropagation();
+      wrap.appendChild(inp);
+    }else{
+      const span=document.createElement('span');span.className='file-name'+(item.kind==='directory'?' dir':'');span.textContent=item.name;
+      wrap.appendChild(span);
+    }
+    tdName.appendChild(wrap);tr.appendChild(tdName);
+
+    // size
+    const tdSize=document.createElement('td');tdSize.className='size-col';
+    tdSize.textContent=item.kind==='file'?fmtSize(item.size):'—';tr.appendChild(tdSize);
+
+    // date
+    const tdDate=document.createElement('td');tdDate.className='date-col';
+    tdDate.textContent=fmtDate(item.modified);tr.appendChild(tdDate);
+
+    tbody.appendChild(tr);
+  });
+  updateSortArrows();
+  showStatus();
+}
+
+function toggleSel(name,multi){
+  if(multi){selected.has(name)?selected.delete(name):selected.add(name);}
+  else{if(selected.size===1&&selected.has(name))selected.clear();else{selected.clear();selected.add(name);}}
+  renderEntries();updateToolbar();
+}
+
+function toggleAll(){
+  const filtered=getFiltered();
+  const allChk=filtered.every(e=>selected.has(e.name));
+  if(allChk)filtered.forEach(e=>selected.delete(e.name));
+  else filtered.forEach(e=>selected.add(e.name));
+  renderEntries();updateToolbar();
+}
+
+function cycleSort(col){
+  if(sortBy===col)sortDir*=-1;else{sortBy=col;sortDir=1;}
+  renderEntries();
+}
+
+function updateSortArrows(){
+  ['name','size','modified'].forEach(col=>{
+    const el=document.getElementById('arr-'+col);
+    if(el)el.textContent=sortBy===col?(sortDir===1?'↑':'↓'):'';
+  });
+}
+
+function renderBreadcrumb(){
+  const bc=document.getElementById('breadcrumb');
+  bc.innerHTML='';
+  pathStack.forEach((s,i)=>{
+    if(i>0){const sep=document.createElement('span');sep.className='bc-sep';sep.textContent='›';bc.appendChild(sep);}
+    const sp=document.createElement('span');
+    sp.className='bc-part'+(i===pathStack.length-1?' active':'');
+    sp.textContent=s.name;
+    if(i<pathStack.length-1)sp.onclick=()=>goTo(i);
+    bc.appendChild(sp);
+  });
+}
+
+function updateToolbar(){
+  const hasSel=selected.size>0;
+  const hasDir=!!currentDir;
+  ['btn-new','btn-up','btn-ref'].forEach(id=>{
+    const el=document.getElementById(id);if(el)el.style.display=hasDir?'':'none';
+  });
+  const del=document.getElementById('btn-del');
+  if(del){del.style.display=hasDir?'':'none';del.disabled=!hasSel;del.textContent=`🗑 Delete${hasSel?' ('+selected.size+')':''}`;};
+  const up=document.getElementById('btn-up');if(up)up.disabled=pathStack.length<=1;
+  const s=document.getElementById('search');if(s)s.style.display=hasDir?'':'none';
+}
+
+function showStatus(){
+  const stat=document.getElementById('status');
+  if(!currentDir){stat.style.display='none';return;}
+  stat.style.display='flex';
+  const filtered=getFiltered();
+  const folders=entries.filter(e=>e.kind==='directory').length;
+  const files=entries.filter(e=>e.kind==='file').length;
+  const total=entries.filter(e=>e.kind==='file').reduce((s,e)=>s+(e.size||0),0);
+  const q=document.getElementById('search')?.value;
+  document.getElementById('stat-counts').textContent=`${folders} folder${folders!==1?'s':''}, ${files} file${files!==1?'s':''}`;
+  document.getElementById('stat-size').textContent=total>0?fmtSize(total)+' total':'';
+  document.getElementById('stat-sel').textContent=selected.size>0?`${selected.size} selected`:'';
+  document.getElementById('stat-search').textContent=q?`${filtered.length} matching "${q}"`:'';
+}
+
+function showView(v){
+  document.getElementById('empty').style.display=v==='empty'?'flex':'none';
+  document.getElementById('loading').style.display=v==='loading'?'flex':'none';
+  document.getElementById('no-results').style.display=v==='no-results'?'block':'none';
+  document.getElementById('file-table').style.display=v==='table'?'table':'none';
+}
+
+function showErr(msg){
+  const bar=document.getElementById('errbar');
+  bar.style.display='flex';
+  bar.innerHTML=`<span>⚠ ${msg}</span><span onclick="this.parentElement.style.display='none'" style="cursor:pointer;font-weight:700;margin-left:12px;font-size:14px">✕</span>`;
+}
+
+function showCtx(x,y,item){
+  const ctx=document.getElementById('ctx');
+  const wx=window.innerWidth,wy=window.innerHeight;
+  ctx.style.display='block';
+  ctx.style.left=Math.min(x,wx-170)+'px';
+  ctx.style.top=Math.min(y,wy-130)+'px';
+  let html='';
+  if(item.kind==='directory')html+=`<div class="ctx-item" onclick="enter(getEntryByName('${esc(item.name)}'));hideCtx()">↵&nbsp;&nbsp;Open folder</div>`;
+  html+=`<div class="ctx-item" onclick="startRename('${esc(item.name)}');hideCtx()">✏&nbsp;&nbsp;Rename</div>`;
+  html+=`<div class="ctx-sep"></div>`;
+  const isSel=selected.size>1&&selected.has(item.name);
+  const delNames=isSel?JSON.stringify([...selected]):JSON.stringify([item.name]);
+  html+=`<div class="ctx-item danger" onclick="deleteItems(new Set(${delNames}));hideCtx()">🗑&nbsp;&nbsp;Delete</div>`;
+  ctx.innerHTML=html;
+}
+
+function hideCtx(){document.getElementById('ctx').style.display='none';}
+function esc(s){return s.replace(/\\/g,'\\\\').replace(/'/g,"\\'");}
+function getEntryByName(name){return entries.find(e=>e.name===name);}
+
+document.addEventListener('mousedown',e=>{if(!e.target.closest('#ctx'))hideCtx();});
+document.addEventListener('keydown',e=>{
+  if(!currentDir)return;
+  if(e.key==='F2'&&selected.size===1)startRename([...selected][0]);
+  if(e.key==='Delete'&&selected.size)deleteSelected();
+  if(e.key==='Escape'){selected.clear();renaming=null;renderEntries();updateToolbar();}
+  if((e.ctrlKey||e.metaKey)&&e.key==='a'){e.preventDefault();getFiltered().forEach(e=>selected.add(e.name));renderEntries();updateToolbar();}
+});
+</script>
+</body>
+</html>

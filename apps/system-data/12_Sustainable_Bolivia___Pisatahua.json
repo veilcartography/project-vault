@@ -1,0 +1,35 @@
+{
+  "id": "12",
+  "project_name": "Sustainable Bolivia / Pisatahua",
+  "vault_project": "Pisatahua / Sustainable Bolivia",
+  "status": "active",
+  "memory": {
+    "what_this_project_is": "An international marketing, tourism, and community-consulting project based in the Bolivian Amazon. Synthesises high-velocity branding experience to help scale a sustainable conservation ecosystem and local volunteer program.",
+    "location": "Bolivian Amazon — Playa Blanca, Bolivia (travel route from Leeds)",
+    "strategic_contributions": {
+      "brand_audits": [
+        "Pisatahua_Comprehensive_Marketing_Plan_2026.docx",
+        "Pisatahua_Branding_Analysis.pdf"
+      ],
+      "focus_areas": [
+        "Retreat SEO",
+        "Social messaging",
+        "Booking pipelines"
+      ],
+      "study_guides": [
+        "Educational programs for international guests",
+        "Curriculum templates",
+        "Cultural intake guides"
+      ],
+      "pitch_deck": [
+        "Formatted one-pagers",
+        "Five-slide sales presentations"
+      ]
+    },
+    "next_actions": [
+      "Use existing marketing plan and branding analysis as base for client-facing portfolio",
+      "Package pitch deck as a consulting deliverable",
+      "Connect volunteer program curriculum to AI Onboarding Map project"
+    ]
+  }
+}

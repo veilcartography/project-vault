@@ -1,0 +1,172 @@
+﻿# Keep Local Manifest
+
+Generated: 
+2026-06-25 21:55:27
+
+These are the files currently recommended to remain on this device or be high priority local references.
+
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\auction_deal_tracker (1).xlsx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\auction_deal_tracker.xlsx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Ayahuasca-Safety-in-Bolivia_How-to-Choose-a-Safe-Retreat_SEO_v2.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\can u dress this up in a doc  Ayahuasca Safety in.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\DEALS.xlsx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\diligence_tracker_tasks_csv_dash.xlsx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\4-creating-sigils-by-sarah-barr.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\Appeal-a-benefit-decision-After-you-submit-your-appeal-GOV-UK-05-29-2026_04_32_AM.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\Appeal-a-benefit-decision-What-happens-at-the-hearing-GOV-UK-05-29-2026_04_32_AM.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\auction_deal_tracker.xlsx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\Ayahuasca Preparation Dieta Complete Guide to Sacred Plant Medicine Preparation.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\Ayahuasca Safety Bolivia Complete Guide to Safe Plant Medicine Retreats (1).docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\Challenging-a-DLA-decision-appealing-against-the-decision-Citizens-Advice-05-29-2026_04_30_AM.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\Challenging-a-DLA-decision-mandatory-reconsideration-Citizens-Advice-05-29-2026_04_31_AM.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\Copilot\Ayahuasca Preparation on a Budget A Practical UK Guide What.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\DOC 7 My Journey Toward Ayahuasca From Curiosity to Concrete Steps.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\DWP complaint.txt`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\Formal Complaint DLA Delay and.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\gnostic_gospels_strategyq.txt`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\gnostic_training_manual.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\index.html`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\MCOL-Money-Claim-Online-Submit-Claim-Payment-Details-05-29-2026_02_29_AM.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\my_ai_playbook (1).txt`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\my_ai_playbook (2).txt`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\my_ai_playbook.txt`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\my-ai-playbook.txt`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\Planning_ESL_and_Gnosis_Class-2026-05-23-14-45-26.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\Preparing-Your-Meals-Before-Pisatahua_From-Home-to-the-Amazon.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\Real Talk Ayahuasca Preparation on a Budget in Leeds (1).docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\Social_Media_Strategy_For_Gnostic_Renaissance-2026-05-23-14-45-20.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\Social_Media_Strategy_Setup-2026-05-23-14-45-13.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\SSCS1_0426_save.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\Supreme_Auctions_Timeline.html`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\Supreme_Auctions_Timeline_v2.html`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\trip\Ayahuasca-Preparation-and-Dieta_Complete-Guide-for-First-Timers_SEO.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\trip\Ayahuasca-Preparation-on-a-Budget_A-Practical-UK-Guide.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\trip\Ayahuasca-Safety-in-Bolivia_How-to-Choose-a-Safe-Retreat_SEO.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Documents\veilcartography.org Mail - Enquiry to the Citizens Advice consumer service. Reference CCA-7216303.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\DreamyDealsLeedsUK_Multi-Platform_Reseller_Invento-Genspark_AI_Sheets-20260321_2251 2026-03-28.xlsx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Formal Escalation  Account IB883034.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Formal Escalation.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\forward leeds sars.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\I will now begin by carefully auditing all 13 files in your project folder to extract every piece of relevant data regarding your Reseller Operations.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Microsoft Copilot Chat Files\basic_spanish_lesson_1.md.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Microsoft Copilot Chat Files\basic_spanish_lesson_2.md.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Microsoft Copilot Chat Files\basic_spanish_lesson_3.md.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Microsoft Copilot Chat Files\PISATAHUA  EXECUTIVE STRATEGY SUMMARY.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Microsoft Copilot Chat Files\Pisatahua Meals & Preparation Guide From Leeds to the Bolivian Amazon.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Microsoft Copilot Chat Files\Pisatahua_2026_Jungle_Blueprint.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Microsoft Copilot Chat Files\Pisatahua_Safety_Ecosystem.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Microsoft Copilot Chat Files\Riberalta–Aquicuana Starter Recipes.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Microsoft Copilot Chat Files\Spanish Lessons Sprint.pptx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Microsoft Copilot Chat Files\spanish_quiz_1.md.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Microsoft Copilot Chat Files\Summary_A_Journey_Towards_Ayahuasca_From_Curiosity_To_Concrete_Steps.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Microsoft Copilot Chat Files\Typical Pisatahua Retreat Meals & Pre-Trip Preparation Planning.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\My Journey Toward Ayahuasca From Curiosity to Concrete Steps.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Notebooks\GNOSIS.url`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Pictures\Screenshots\30-Day_Facebook_Content_Calendar_@dreamydealsleeds.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Pictures\Screenshots\Ayahuasca-Preparation-and-Dieta_Complete-Guide-for-First-Timers_SEO_v2 (1).docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Pictures\Screenshots\Gmail - Enquiry to the Citizens Advice consumer service. Reference CCA-7216303.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Pictures\Screenshots\Tarot_Reading__Career_and_Personal_Projects-2026-05-23-05-11-01.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Pisatahua_Guest‑Facing_Tone_Guide.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\Ai Onboarding Guide.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\codex\ai-onboarding-map.html`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\codex\index.html`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\codex\project-clarity.html`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\Documents\_Systems_Overview__Notion_Agents__Databases.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\Documents\AI_Email_Assistant_Product_Guide.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\Documents\AI_Email_Assistant_Prompt_Pack.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\Documents\COMPLETE SYSTEM PLAN.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\Documents\Gumroad_Listing_Copy.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\Documents\notion agents.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\Documents\PLAY_STORE_SUBMISSION_GUIDE.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\Documents\portfolio data.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\Documents\PORTFOLIO.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\Documents\prep checklist.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\Documents\PROJECT STRUCTURE (1).docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\Documents\Project Summary and File Editing Help.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\Documents\reseller_operations_manual.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\Documents\tee-gantt-board-guide.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\Documents\VeilCartography_CourseCatalogue.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\persona docs\LLM CHATS\agent chats1.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\persona docs\LLM CHATS\channel data.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\persona docs\LLM CHATS\Crafting_Your_Professional_Persona_Summary-2026-05-23-05-06-49.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\persona docs\LLM CHATS\digital tools1.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\persona docs\LLM CHATS\gemini mems.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\persona docs\LLM CHATS\New Section 1.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\persona docs\LLM CHATS\Notion AI agent email agent system.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\persona docs\LLM CHATS\Notion_Template_Business_Strategy__.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\persona docs\LLM CHATS\PDF.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\persona docs\LLM CHATS\pieces_chat_export_launching_gnostic_practices_course_on_gumroad_may_19_2026_5_58pm.md`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\persona docs\LLM CHATS\pieces_copilot_message_export_june_12_2026_9_28pm.txt`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\persona docs\LLM CHATS\pieces_copilot_message_export_june_8_2026_5_35pmNEED TO FOLLOW TASKS.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\persona docs\LLM CHATS\pieces_copilot_message_export_may_27_2026_4_42am.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\persona docs\LLM CHATS\professional_persona_clean_print.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\persona docs\LLM CHATS\Quick Notes.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\persona docs\LLM CHATS\synthass ref.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\persona docs\LLM CHATS\ttask tracker.pdf`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\persona docs\pieces_professional_persona.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\persona docs\TEE_AI_Context_Document.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\Project Clarity User Guide.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\portfolio\tee-gantt-board-guide.md.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Reseller_Command_Center_-_Operational_Workflow_Guide 2026-03-28.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\Safety-at-Pisatahua_Web-Page.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\show how to use Viva Goals.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\stock data2026.xlsx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\test - Documents\ESL class.url`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\test - Documents\VINTED FLOW.xlsx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\want to create help with reseller tasks 1.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\want to create help with reseller tasks 2.docx`
+- `C:\Users\Public\Documents\OneDrive - work from anywhere\want to create help with reseller tasks.docx`
+- `C:\Users\Super\Documents\Ai Onboarding Guide.docx`
+- `C:\Users\Super\Documents\Codex\2026-05-27\hi-im-new-to-coding\project-clarity-vault.html`
+- `C:\Users\Super\Documents\Conflict_&_Clarity_Report_Master_Project_Ledger.docx`
+- `C:\Users\Super\Documents\Facebook_Account_Analysis_@dreamydealsleeds_(Tracie_Walker).pdf`
+- `C:\Users\Super\Documents\Gnostic_Gospels__Jesus_s_Polymorphic_Resurrection-2026-05-23-05-10-47.pdf`
+- `C:\Users\Super\Documents\Gumroad_Product_Listing_—_Module_1_What_Is_Gnosis.pdf`
+- `C:\Users\Super\Documents\Project Clarity  Memory Vault.docx`
+- `C:\Users\Super\Documents\shareable1\Your Portfolio Master Document.docx`
+- `C:\Users\Super\Downloads\~$deo_Outline_The_Gnostic_Gospels_Renaissance_and_Modern_Spirituality.docx`
+- `C:\Users\Super\Downloads\~$deo_Script_The_Gnostic_Gospels_Renaissance_and_Modern_Spirituality.docx`
+- `C:\Users\Super\Downloads\~$sual_Storyboard_and_Aesthetic_Direction_The_Gnostic_Gospels_Renaissance.docx`
+- `C:\Users\Super\Downloads\AI-Onboarding-Map-Office-Agent-06-02-2026_07_07_PM.pdf`
+- `C:\Users\Super\Downloads\ALL_VAULT_JSON_FILES\vault_json\ALL_PROJECTS_COMBINED.json`
+- `C:\Users\Super\Downloads\ALL_VAULT_JSON_FILES\vault_json\individual\01_Veil_Cartography___Gnostic_System.json`
+- `C:\Users\Super\Downloads\ALL_VAULT_JSON_FILES\vault_json\individual\02_AI_Tools___Personal_AI_OS.json`
+- `C:\Users\Super\Downloads\ALL_VAULT_JSON_FILES\vault_json\individual\03_Dreamy_Geek___Reseller_Operations.json`
+- `C:\Users\Super\Downloads\ALL_VAULT_JSON_FILES\vault_json\individual\04_AI_Onboarding_Map.json`
+- `C:\Users\Super\Downloads\ALL_VAULT_JSON_FILES\vault_json\individual\05_Amazon_Volunteering___Life-Transition_Ga.json`
+- `C:\Users\Super\Downloads\ALL_VAULT_JSON_FILES\vault_json\individual\06_VA_Training___Ex-Offender_Employment_Con.json`
+- `C:\Users\Super\Downloads\ALL_VAULT_JSON_FILES\vault_json\individual\07_Infinity___Recycled_Candle_Enterprise.json`
+- `C:\Users\Super\Downloads\ALL_VAULT_JSON_FILES\vault_json\individual\08_Community_Partner_Scheme.json`
+- `C:\Users\Super\Downloads\ALL_VAULT_JSON_FILES\vault_json\individual\09_Veil_Cartography_(Full_Portfolio_Detail).json`
+- `C:\Users\Super\Downloads\ALL_VAULT_JSON_FILES\vault_json\individual\10_Dreamy_Deals_Leeds_UK_(Full_Portfolio_De.json`
+- `C:\Users\Super\Downloads\ALL_VAULT_JSON_FILES\vault_json\individual\11_Pardner_ROSCA_(Community_&_Collaborative.json`
+- `C:\Users\Super\Downloads\ALL_VAULT_JSON_FILES\vault_json\individual\12_Sustainable_Bolivia___Pisatahua.json`
+- `C:\Users\Super\Downloads\ALL_VAULT_JSON_FILES\vault_json\individual\13_Portfolio_Packaging_&_Monetisation_Strat.json`
+- `C:\Users\Super\Downloads\basic_spanish_lesson_1.md.docx`
+- `C:\Users\Super\Downloads\basic_spanish_lesson_2.md.docx`
+- `C:\Users\Super\Downloads\basic_spanish_lesson_3.md.docx`
+- `C:\Users\Super\Downloads\Conflict_&_Clarity_Report_Master_Project_Ledger.docx`
+- `C:\Users\Super\Downloads\Documents\notion agents.pdf`
+- `C:\Users\Super\Downloads\gnostic_gospels_strategy.md`
+- `C:\Users\Super\Downloads\Gnostic_YouTube_Launch_Kit.md.docx`
+- `C:\Users\Super\Downloads\index.html`
+- `C:\Users\Super\Downloads\MEMORY ENTRYS\🗺️ MEMORY ENTRY — Veil Cartography  Gnostic System.md`
+- `C:\Users\Super\Downloads\MEMORY ENTRYS\🛒 MEMORY ENTRY — Dreamy Geek  Reseller Operations.md`
+- `C:\Users\Super\Downloads\MEMORY ENTRYS\🛒 MEMORY ENTRY — Dreamy Geek  Reseller Operations1.txt`
+- `C:\Users\Super\Downloads\MEMORY ENTRYS\🤖 MEMORY ENTRY — AI Tools  Personal AI OS.md`
+- `C:\Users\Super\Downloads\pieces_chat_export_project_portfolio_listing_and_marketing_strategy_june_2_2026_5_13am.md`
+- `C:\Users\Super\Downloads\PORTFOLIO (1).pdf`
+- `C:\Users\Super\Downloads\PORTFOLIO (2).pdf`
+- `C:\Users\Super\Downloads\PORTFOLIO.pdf`
+- `C:\Users\Super\Downloads\portfolio_projects_wall (1).pdf`
+- `C:\Users\Super\Downloads\portfolio_projects_wall.pdf`
+- `C:\Users\Super\Downloads\portfolio_wall_sheet.pdf`
+- `C:\Users\Super\Downloads\professional_persona_clean_print (1).pdf`
+- `C:\Users\Super\Downloads\professional_persona_clean_print.pdf`
+- `C:\Users\Super\Downloads\project-clarity-backup-2026-06-25.json`
+- `C:\Users\Super\Downloads\Spanish Lessons Sprint (1).pptx`
+- `C:\Users\Super\Downloads\Spanish Lessons Sprint.pptx`
+- `C:\Users\Super\Downloads\spanish_quiz_1.md.docx`
+- `C:\Users\Super\Downloads\Which Promotional Material Is Most Useful for Mini-Courses_\Module_01__What_Is_Gnosis_(FREE).pdf`
+- `C:\Users\Super\Downloads\Which Promotional Material Is Most Useful for Mini-Courses_\Module01_WhatIsGnosis_FREE_transcript.txt`
+- `C:\Users\Super\Downloads\Which Promotional Material Is Most Useful for Mini-Courses_\Module01_WhatIsGnosis_FREE_transcription_20260516_044145.txt`

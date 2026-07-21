@@ -1,0 +1,30 @@
+🛒 MEMORY ENTRY — Dreamy Geek / Reseller Operations
+WHAT THIS PROJECT IS
+Dreamy Geek is the reseller operations system. Uses AI, Notion, email monitoring, and browser assistance to manage the full flow from auction discovery to marketplace listing and customer follow-up.
+END-TO-END WORKFLOW
+Auction listing appears — alerts set for relevant items (microwaves, vacuums, other stock)
+Email alert arrives — picked up by email/notification monitoring → buying task created
+AI evaluates item — Perplexity assesses: Brand, Colour, Weight, Resale potential, Fees, Delivery costs
+Item goes to watch list — suitable items tracked for auction monitoring
+Price research — Perplexity retrieves price info and applies cost filters
+Live auction monitoring — browser extensions monitor activity and bids
+Winning item captured — lot number, purchase price, metadata compiled
+Data imported to Notion — agent populates invoice/stock table (all data except final costs)
+Invoice arrives — uploaded to Notion → system extracts tax, delivery, final price, total cost
+Channel selection — eBay, Etsy, Vinted, other marketplaces
+Listing preparation — photos added, product criteria completed, listing text written
+Browser listing — Perplexity fills platform listing boxes from Notion data
+Post-listing notifications — favourites, buyer messages, sales alerts filed into reseller task tracker
+HUMAN APPROVAL POINTS
+Review item before buying
+Review listing before publishing
+Set final price
+Confirm photos are ready
+Decide: own photos or retail images
+Reply to customer messages when flagged
+SOP STAGES
+Sourcing → Research → Watch List → Bidding → Won/Lost → Invoice Processing → Stock Intake → Photography → Pricing → Listing Draft → Listing Live → Message Handling → Sale → Dispatch → Review/Learning
+DATABASE FIELDS TO BUILD
+Item Name | Auction House | Lot Number | Auction URL | Watch Status | Buying Status | Brand | Model | Colour | Weight | Condition | Purchase Price | Buyer Fees | Tax/VAT | Delivery Cost | Total Landed Cost | Estimated Resale Price | Target Profit | Chosen Sales Channel | Listing Status | Photo Status | Description Ready? | Platform Message Status | Related Invoice | Related Task | Notes
+NEXT ACTION
+Turn workflow into SOP stages → map each stage to database fields / automations

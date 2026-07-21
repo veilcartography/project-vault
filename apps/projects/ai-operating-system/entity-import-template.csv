@@ -1,0 +1,3 @@
+Name,Element Type,In,Status,Description (Optional),Comment is Required,Show Activity Type Selection,Activity Type is Required,Activity Type,Show Billable Flag,Billable Setting,Assign Users
+Customer,Customer,,In Progress,,Yes,No,No,,Yes,Based on selected Activity Type,tracie@workfromanywhere.onmicrosoft.com
+Project,Project,Customer,To Do,,No,Yes,Yes,posting new sales items,Yes,Billable,tracie@workfromanywhere.onmicrosoft.com
