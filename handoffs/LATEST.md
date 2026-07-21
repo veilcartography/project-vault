@@ -1,5 +1,6 @@
-# Latest Handoff
+# Moved
 
-Current handoff: 2026-07-20-migration-discovery.md
+Handoffs are consolidated under `apps/handoffs/`.
+Latest pointer: `apps/handoffs/LATEST.md`.
 
-This file is the single entry point for the most recent completed session handoff. Read this before starting work after any interruption.
+Safe to delete this folder.

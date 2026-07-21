@@ -26,8 +26,8 @@ Before any specialist work begins after an interruption, read these in order:
 2. `CURRENT_STATUS.md`
 3. `NEXT_ACTION.md`
 4. `docs/Protocol.md`
-5. `handoffs/LATEST.md`
-6. The handoff file named in `handoffs/LATEST.md`
+5. `apps/handoffs/LATEST.md`
+6. The handoff file named in `apps/handoffs/LATEST.md`
 7. Verify the repository is internally consistent
 8. Begin specialist work
 

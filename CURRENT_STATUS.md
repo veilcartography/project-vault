@@ -22,7 +22,7 @@ Run the curated migration sweep in one pass:
 
 ## Blockers
 - Claude's Linux sandbox is intermittently unavailable (Anthropic-side), which blocks the automated bulk-copy pass. Manual drag-drop works in the meantime.
-- Structural duplication to resolve (left by an earlier parallel write): two handoff folders (`handoffs/` and `apps/handoffs/`) and two state files (`PROJECT_STATE.md` and this file). Consolidate to one of each.
+- Duplication cleanup: canonical is now `apps/handoffs/` (with `LATEST.md`) + `CURRENT_STATUS.md`. The orphaned root `handoffs/` folder and `PROJECT_STATE.md` are ready to delete in File Explorer (sandbox down, so cannot be removed programmatically).
 
 ## Notes
 This file reflects the real current state in plain language. Only Claude edits it.
