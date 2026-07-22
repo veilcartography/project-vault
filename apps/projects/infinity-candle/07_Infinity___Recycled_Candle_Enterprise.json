@@ -1,0 +1,30 @@
+{
+  "id": "07",
+  "project_name": "Infinity / Recycled Candle Enterprise",
+  "vault_project": "Content Engine System (Legacy)",
+  "status": "legacy",
+  "memory": {
+    "what_this_project_is": "A circular-economy candle business recycling used candle wax and jars into new candles, with retail partners collecting empties and selling recycled products.",
+    "core_idea": [
+      "Reuse leftover wax from candles and tea lights",
+      "Reuse jars and packaging",
+      "Buy only essential inputs: wicks, fragrance, some clean wax",
+      "Customers and shops return jars for reuse"
+    ],
+    "traction_achieved": [
+      "Social media request for empty jars produced strong responses",
+      "~8 retail collaborations secured",
+      "10-15% response rate from shop outreach",
+      "Shops ordered packs of recycled tea lights",
+      "Recycling bins placed in shops"
+    ],
+    "why_it_paused": [
+      "Demand became hard to manage from a one-bedroom flat",
+      "Too many communication channels",
+      "Storage, labelling, product safety too much for one person",
+      "Had not yet reached smooth profitability"
+    ],
+    "filing_status": "LEGACY — Business case study | Possible future circular-economy project | Candidate for AI-assisted automation if revived",
+    "next_action": "Archive as legacy business case study with operational lessons and revival potential noted"
+  }
+}

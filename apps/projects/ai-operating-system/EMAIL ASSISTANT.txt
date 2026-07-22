@@ -1,0 +1,107 @@
+📖 Overview
+You are an email assistant. Your job is to help me triage incoming mail for the email address(es) that I have connected to Notion by producing a daily email summary with recommended actions for how to handle each new email.
+Important: When running your daily workflow, first confirm how many addresses I have connected. If I have more than one, make sure to iterate systematically through each. Also be sure to review all new messages in my inbox for the prior 24 hours. Go beyond subject lines and be sure you understand the full thread context, unless you can be fully confident in your recommended action from the subject alone (sometimes true of simple email formats like confirmation codes).
+⚙️ Workflow
+	1. Every morning, read through all of the mail in my INBOX from the past 24 hours (your search tools allow you to filter on time range and presence in inbox, e.g. in:inbox newer_than:1d)
+	2. Base your suggestions for which emails to Archive on the routing rules below:
+Routing Rules
+	3. Analyze all of the email I've received in the last 24 hours. Use your analysis to generate a summary using the Action-First Dashboard format, described here:
+		1. Start with a one-line header: 📬 [Date] Summary — [my email address]
+		2. Add a subheader that shows summary stats: total new emails | how many need action | how many to archive
+		3. Needs Your Attention section (Keep in Inbox / Reply): List each actionable email with full details — sender, subject, received time (local), content summary, action required, and reason (based on routing rules). If none, indicate "No emails that need your attention today!" or equivalent
+		4. Safe to Archive section: Group emails by category with sender counts. Follow this format but tailored to the actual categories of email (the categories below are useful references; they’re not exhaustive nor obligatory to include, though they may be widely applicable):
+			§ 📰 Newsletters: 2× Lenny's Newsletter, 1× SemiAnalysis, etc.
+			§ 📊 Industry Digests: 2× Banking Dive, 1× Marketing Brew, etc.
+			§ 🛍️ Marketing/Promos: 1× Parajumpers, etc.
+			§ 🔔 Notifications: (automated alerts, build statuses, etc.)
+			§ 🧾 Receipts/Confirmations: (order confirmations, etc.)
+No need to list every subject individually — just sender names and counts.
+		5. IMPORTANT: After you’ve fully planned the table’s contents, make sure you send the completed table as a chat message to the user so that they can review it.
+	4. After creating the table, review the day’s emails for any repeating patterns. If there are easily described types of emails that you are consistently recommending I archive, suggest the creation of a Gmail filter rule that will skip inbox (auto-archive) similar emails going forward. This makes your job easier and saves cost for the user. But only ever create these filters at my explicit consent to the recommendation.
+	5. Finally, send me a Notion notification so that I can chat with you about this summary table and any filter rule recommendations.
+	6. For any email whose archiving I approve, please label it “Archived by Notion Agent” prior to archiving for bookkeeping and learning purposes.
+🎓 Learning loops
+	1. I will review the table and confirm actions to be taken via chat
+	2. Do not take actions without my confirmation
+	3. When I reply with explicit feedback, consider whether it would be helpful to update the Routing Rules to durably reflect that preference
+
+I'll test the daily summary trigger by simulating what happens at 9 AM. This means I'll search for emails from the past 24 hours in your connected Gmail accounts and generate the summary dashboard according to your instructions.
+Let me start by checking your connected email accounts and retrieving emails from the past 24 hours.
+Let me read the mail module documentation to understand the correct parameters for searching emails.
+Now I understand the mail API. I need to search emails for each of your connected email addresses. Let me search for emails from the past 24 hours in both accounts.
+Excellent! I've retrieved all emails from the past 24 hours across both your Gmail accounts. Now let me read the full content of key emails to understand context better, then I'll generate your summary dashboard according to your instructions.
+Let me view a few important threads to understand their full context:
+Perfect. Now I have all the information I need. Let me generate the Action-First Dashboard summary according to your instructions. I'll organize the emails from both accounts systematically.
+📬 22 May 2026 Summary — walkerlouisha5@gmail.com & bbeezboutiquecandles@gmail.com
+Summary Stats: 39 total new emails | 4 need your attention | 35 safe to archive
+
+Needs Your Attention (Keep in Inbox / Reply):
+	1. From: Google (no-reply@accounts.google.com)
+Subject: Security alert
+Received: 22 May, 5:34 PM
+Account: walkerlouisha5@gmail.com
+Summary: Notion Mail was granted access to your Google Account data. If you didn't authorize this, someone may be attempting unauthorized access. Google is asking you to check your account activity and secure your account.
+Action Required: Review your Google Account security immediately and verify the Notion Mail authorization was legitimate.
+Reason: Important security notification requiring immediate action to protect your account.
+	2. From: Google (no-reply@accounts.google.com)
+Subject: Your Google Account was recovered successfully
+Received: 22 May, 4:18 PM
+Account: walkerlouisha5@gmail.com
+Summary: Recovery alert for HELLO@veilcartography.org (which uses walkerlouisha5@gmail.com as recovery email). Account was successfully recovered. If you don't recognize this account, you should remove it as your recovery email.
+Action Required: Verify if you recognize the veilcartography.org account. If not, remove your recovery email from it.
+Reason: Important security decision required on your recovery email status.
+	3. From: Bokio Support (support@bokio.co.uk)
+Subject: Formal Notice: Termination of Bokio services in the UK – June 30, 2026
+Received: 22 May, 2:03 PM
+Account: bbeezboutiquecandles@gmail.com
+Summary: Formal notice that Bokio will terminate UK services on June 30, 2026. Your account will be closed. Critical action required: You must export all your accounting data and reports before this date. Bokio has partnered with Tide for transition assistance and will process pro-rata refunds automatically.
+Action Required: Export all accounting data from Bokio before June 30, 2026. Consider transitioning to Tide or another accounting platform.
+Reason: Time-sensitive deadline with significant business impact (deliverable with deadline).
+	4. From: PayPal (service@paypal.co.uk)
+Subject: PayPal: Your bank declined your electronic money transfer
+Received: 22 May, 8:38 AM
+Account: bbeezboutiquecandles@gmail.com
+Summary: Your attempted bank transfer of £30.00 GBP to your PayPal account (initiated 15 May) was declined by your bank on 15 May. The transaction is cancelled. This is informational but may require investigation if you intended to make this transfer.
+Action Required: Check with your bank if you intended this transfer, or verify if this was fraudulent activity.
+Reason: Important financial notification requiring potential follow-up.
+
+Safe to Archive:
+🔔 Notifications & Updates: 11 emails
+	• 2× Google (Verification Code, Account recovery notices)
+	• 2× Nextdoor East Horsforth (Safety posts)
+	• 2× BidSpotter.co.uk (Auction alerts)
+	• 1× i-bidder.com (Auction alert)
+	• 1× Loom (Account migration)
+	• 1× Square (Meta connection issue)
+	• 1× Gumtree (New messages notification)
+	• 1× Bokio (service termination - related to actional email above)
+📰 Newsletters & Learning: 5 emails
+	• 1× Brett Larkin Yoga (2 emails across accounts)
+	• 1× SpanishPod101 (Quiz invitation)
+	• 1× Alison Courses (Course completion motivation)
+	• 1× Enterprise Nation Community (2 emails - event invitations)
+🛍️ Marketing/Promotions: 12 emails
+	• 3× Mobiles newsletter (AI favorites, bestsellers)
+	• 3× BidSpotter.co.uk (Auction listings)
+	• 2× i-bidder.com (Auction notices)
+	• 1× International Auctions (Friday auction promo)
+	• 1× Deliveroo (£7 discount offer)
+	• 1× NI Candle Supplies (Order discount)
+	• 1× Alibaba (Seller inquiry tools)
+	• 1× APAT (Fantasy poker competition)
+🔐 Security & Government: 3 emails
+	• 1× HMRC (P11D tax help notice)
+	• 1× LinkedIn (Network connection notification)
+	• 1× PlayOJO (Failed login alert)
+💳 Business/Finance: 2 emails
+	• 1× Utilita/UK Search (Outstanding debt notice)
+	• 1× LinkedIn notification (network activity)
+
+Pattern Suggestion:
+I notice you receive frequent auction alerts (BidSpotter, i-bidder totaling 6 emails in 24 hours) and regular marketing newsletters from Mobiles, Alison Courses, and others. Once you confirm which emails to archive, I recommend creating Gmail filter rules for:
+	• Auction platforms (auto-archive new auctions unless from specific saved searches)
+	• Newsletter/promo senders (auto-archive newsletters from Mobiles, Alison, etc. unless you want them in inbox)
+This would significantly reduce inbox clutter while keeping genuinely actionable emails visible.
+
+Ready for your review. Please let me know which emails you'd like me to archive, and I'll apply the "Archived by Notion Agent" label and move them out of your inbox. Also, would you like me to create those Gmail filter rules once you confirm?
+

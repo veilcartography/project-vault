@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veil Cartography — Reel Scripts & Content Calendar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0a0a0f; color: #e8e0d0; font-family: 'Crimson Pro', Georgia, serif; padding: 40px 20px; }
+  h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem,2.5vw,1.8rem); text-align:center; color:#c9a84c; letter-spacing:0.15em; margin-bottom:8px; }
+  .subtitle { text-align:center; color:#9b8ea0; font-style:italic; margin-bottom:40px; }
+
+  .tabs { display:flex; gap:8px; max-width:900px; margin:0 auto 32px; flex-wrap:wrap; }
+  .tab { padding:8px 20px; border:1px solid #2a2535; border-radius:20px; cursor:pointer; font-family:'Cinzel',serif; font-size:0.75rem; letter-spacing:0.1em; color:#9b8ea0; background:transparent; transition:all 0.2s; }
+  .tab.active, .tab:hover { border-color:#c9a84c; color:#c9a84c; background:#c9a84c11; }
+
+  .section { display:none; max-width:900px; margin:0 auto; }
+  .section.active { display:block; }
+
+  /* Reel cards */
+  .reel-card { background:#13121a; border:1px solid #2a2535; border-radius:12px; overflow:hidden; margin-bottom:28px; }
+  .reel-header { background:#1a1520; padding:14px 22px; border-bottom:1px solid #2a2535; display:flex; align-items:baseline; gap:16px; flex-wrap:wrap; }
+  .reel-num { font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.2em; color:#6b5f7a; text-transform:uppercase; }
+  .reel-title { font-family:'Cinzel',serif; font-size:0.9rem; color:#c9a84c; }
+  .reel-body { padding:22px; display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media(max-width:600px){.reel-body{grid-template-columns:1fr;}}
+  .reel-section { background:#0f0e14; border:1px solid #2a2535; border-radius:8px; padding:14px; }
+  .reel-section-label { font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:#6b5f7a; margin-bottom:6px; }
+  .reel-section p { font-size:0.9rem; color:#c8c0d0; line-height:1.65; white-space:pre-wrap; }
+  .reel-cta { grid-column:1/-1; background:#1a1520; border:1px solid #c9a84c33; border-radius:8px; padding:14px; }
+  .reel-cta-label { font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:#c9a84c88; margin-bottom:6px; }
+  .reel-cta p { font-size:0.9rem; color:#c9a84c; line-height:1.5; }
+
+  /* Calendar */
+  .calendar-grid { display:grid; grid-template-columns: 80px repeat(5,1fr); gap:1px; background:#2a2535; border-radius:12px; overflow:hidden; font-size:0.82rem; }
+  .cal-header { background:#1a1520; padding:10px 12px; font-family:'Cinzel',serif; font-size:0.7rem; letter-spacing:0.12em; color:#c9a84c; text-transform:uppercase; }
+  .cal-week { background:#13121a; padding:10px 12px; font-family:'Cinzel',serif; font-size:0.7rem; color:#6b5f7a; display:flex; flex-direction:column; gap:4px; justify-content:center; }
+  .cal-week .theme { font-size:0.65rem; padding:2px 6px; border-radius:10px; text-align:center; border:1px solid; }
+  .cal-cell { background:#13121a; padding:10px 12px; color:#b0a8b8; line-height:1.5; vertical-align:top; }
+  .cal-cell.fri { color:#c9a84c; }
+  @media(max-width:700px){
+    .calendar-grid{grid-template-columns:60px repeat(4,1fr);}
+    .tue-wed{display:none;}
+  }
+</style>
+</head>
+<body>
+<h1>Noesis Uncovered — Reel Scripts & Calendar</h1>
+<p class="subtitle">8 scripts · Hook → Disrupt → Insight → Open Loop · Aligned to 8-module course</p>
+
+<div class="tabs">
+  <button class="tab active" onclick="showSection('reels', this)">🎬 Reel Scripts</button>
+  <button class="tab" onclick="showSection('calendar', this)">📅 8-Week Calendar</button>
+</div>
+
+<div id="reels" class="section active">
+
+<div class="reel-card">
+  <div class="reel-header">
+    <span class="reel-num">Reel 1 / Module 1</span>
+    <span class="reel-title">What is Gnosis? (It's not what you think)</span>
+  </div>
+  <div class="reel-body">
+    <div class="reel-section">
+      <div class="reel-section-label">🎣 Hook (first 3 seconds)</div>
+      <p>Most people think Gnosticism is a religion. It's not. It's the opposite.</p>
+    </div>
+    <div class="reel-section">
+      <div class="reel-section-label">⚡ Disrupt (the unexpected angle)</div>
+      <p>Religion asks you to believe. Gnosis asks you to *know* — through direct experience. Not faith. Not dogma. Experience.
+
+The word gnosis is Greek. It means knowledge that changes you. The kind that lands in the body. The kind that makes you say: I didn't read that. I *felt* it.</p>
+    </div>
+    <div class="reel-section">
+      <div class="reel-section-label">💡 Insight (the takeaway)</div>
+      <p>The Gnostics were persecuted not because their ideas were dangerous — but because they taught that you don't need a priest to reach the divine. You are the way in.</p>
+    </div>
+    <div class="reel-section">
+      <div class="reel-section-label">🔄 Open Loop (leave them wanting more)</div>
+      <p>In the next video — the Gnostic cosmology. Why the world feels broken, and what the ancient texts say about where the light went.</p>
+    </div>
+    <div class="reel-cta">
+      <div class="reel-cta-label">📲 Call to Action</div>
+      <p>The Oracle is live — ask the ancient texts anything. Free. Link in bio.</p>
+    </div>
+  </div>
+</div>
+
+<div class="reel-card">
+  <div class="reel-header">
+    <span class="reel-num">Reel 2 / Module 2</span>
+    <span class="reel-title">You have a divine spark inside you — here's the Gnostic proof</span>
+  </div>
+  <div class="reel-body">
+    <div class="reel-section">
+      <div class="reel-section-label">🎣 Hook (first 3 seconds)</div>
+      <p>You were not born broken. You were born *incomplete*. There's a difference.</p>
+    </div>
+    <div class="reel-section">
+      <div class="reel-section-label">⚡ Disrupt (the unexpected angle)</div>
+      <p>The Gnostics described the Pleroma — a realm of perfect divine light. And they said: a fragment of that light fell into matter. Into you.
+
+The divine spark (*pneuma*) is in every human being. Hidden under layers of conditioning, fear, unconscious pattern.
+
+The whole spiritual path? One thing: remember what you are.</p>
+    </div>
+    <div class="reel-section">
+      <div class="reel-section-label">💡 Insight (the takeaway)</div>
+      <p>The Demiurge — the creator of the material world in Gnostic cosmology — isn't evil. Just blind. He doesn't know there's something higher. That's why the world feels like it was made by someone who didn't quite understand love.</p>
+    </div>
+    <div class="reel-section">
+      <div class="reel-section-label">🔄 Open Loop (leave them wanting more)</div>
+      <p>Next: the texts they buried in a jar in Egypt in 367 AD — and what was in them.</p>
+    </div>
+    <div class="reel-cta">
+      <div class="reel-cta-label">📲 Call to Action</div>
+      <p>Get Module 1 free — What Is Gnosis? PDF download. Link in bio.</p>
+    </div>
+  </div>
+</div>
+
+<div class="reel-card">
+  <div class="reel-header">
+    <span class="reel-num">Reel 3 / Module 3</span>
+    <span class="reel-title">They tried to destroy these texts. One farmer saved them.</span>
+  </div>
+  <div class="reel-body">
+    <div class="reel-section">
+      <div class="reel-section-label">🎣 Hook (first 3 seconds)</div>
+      <p>In 367 AD, a letter went out ordering the destruction of certain texts. Someone buried 52 of them in a jar in the Egyptian desert.</p>
+    </div>
+    <div class="reel-section">
+      <div class="reel-section-label">⚡ Disrupt (the unexpected angle)</div>
+      <p>They were found in 1945 by a farmer digging for fertiliser near Nag Hammadi.
+
+Inside: the Gospel of Thomas. The Apocryphon of John. Thunder, Perfect Mind. 52 texts the Church tried to erase.
+
+And the reason they tried? One saying from Thomas, Saying 3: *'The Kingdom is within you and it is outside you.'*
+
+You don't need the institution. You are the temple.</p>
+    </div>
+    <div class="reel-section">
+      <div class="reel-section-label">💡 Insight (the takeaway)</div>
+      <p>The Gospel of Thomas has no miracles, no resurrection narrative, no theology. Just 114 sayings of Jesus — raw, strange, deeply interior. Scholars think it may be older than the Gospel of Mark.</p>
+    </div>
+    <div class="reel-section">
+      <div class="reel-section-label">🔄 Open Loop (leave them wanting more)</div>
+      <p>Saying 70 will crack something open in you. I'll cover it in a dedicated video soon.</p>
+    </div>
+    <div class="reel-cta">
+      <div class="reel-cta-label">📲 Call to Action</div>
+      <p>The Gnostic Gospels Oracle — ask it anything from the Nag Hammadi Library. Free. Link in bio.</p>
+    </div>
+  </div>
+</div>
+
+<div class="reel-card">
+  <div class="reel-header">
+    <span class="reel-num">Reel 4 / Module 4</span>
+    <span class="reel-title">Sophia fell so you could wake up — the myth that changes everything</span>
+  </div>
+  <div class="reel-body">
+    <div class="reel-section">
+      <div class="reel-section-label">🎣 Hook (first 3 seconds)</div>
+      <p>She was whole. Perfect. Divine. And she made a choice that broke the cosmos — and saved it.</p>
+    </div>
+    <div class="reel-section">
+      <div class="reel-section-label">⚡ Disrupt (the unexpected angle)</div>
+      <p>Sophia — the divine feminine wisdom — desired to know the Father without her partner. In that reaching, she fell. And from her fall, the material world was born.
+
+Most traditions frame this as a mistake. A sin.
+
+The Gnostics said: *it was the engine of liberation.*
+
+She descended so the divine spark could enter matter. So you could exist. So gnosis could happen *inside* the world.</p>
+    </div>
+    <div class="reel-section">
+      <div class="reel-section-label">💡 Insight (the takeaway)</div>
+      <p>Sophia is not just mythology. She's an archetype of your own wisdom faculty — the inner knowing you've been taught to doubt. Every time you trust your intuition over the voice that says 'be rational' — that's Sophia.</p>
+    </div>
+    <div class="reel-section">
+      <div class="reel-section-label">🔄 Open Loop (leave them wanting more)</div>
+      <p>The guided visualisation for meeting your inner Sophia is in Module 4 of the full course. Something shifts when you do it.</p>
+    </div>
+    <div class="reel-cta">
+      <div class="reel-cta-label">📲 Call to Action</div>
+      <p>Full course on Gumroad — Gnostic Practices for Beginners. Link in bio.</p>
+    </div>
+  </div>
+</div>
+
+<div class="reel-card">
+  <div class="reel-header">
+    <span class="reel-num">Reel 5 / Module 5</span>
+    <span class="reel-title">This is why you can study Gnosticism for years and never have gnosis</span>
+  </div>
+  <div class="reel-body">
+    <div class="reel-section">
+      <div class="reel-section-label">🎣 Hook (first 3 seconds)</div>
+      <p>You can understand gnosis completely and never experience it. This is the trap.</p>
+    </div>
+    <div class="reel-section">
+      <div class="reel-section-label">⚡ Disrupt (the unexpected angle)</div>
+      <p>Gnosis is not intellectual. The Gnostics had a word for the faculty that actually accesses it: *nous*.
+
+Not your thinking mind. Not your reasoning. The eye of the heart. The faculty that perceives directly — without filter.
+
+You've used it. The moments when you *knew* something without being able to explain how. That was nous.
+
+The question is: can you turn it on deliberately?</p>
+    </div>
+    <div class="reel-section">
+      <div class="reel-section-label">💡 Insight (the takeaway)</div>
+      <p>The answer is yes. And it requires practice — not more studying. Meditation. Self-inquiry. Sitting with a sacred saying until it speaks, not just to your mind but through your body.</p>
+    </div>
+    <div class="reel-section">
+      <div class="reel-section-label">🔄 Open Loop (leave them wanting more)</div>
+      <p>Module 5 includes two specific Gnostic meditation techniques. One of them uses light visualisation. It's simple and it works.</p>
+    </div>
+    <div class="reel-cta">
+      <div class="reel-cta-label">📲 Call to Action</div>
+      <p>Get the free Module 1 PDF — link in bio. Or ask the Oracle — free. Link in bio.</p>
+    </div>
+  </div>
+</div>
+
+<div class="reel-card">
+  <div class="reel-header">
+    <span class="reel-num">Reel 6 / Module 6</span>
+    <span class="reel-title">The Archons are not demons — they're the patterns keeping you asleep</span>
+  </div>
+  <div class="reel-body">
+    <div class="reel-section">
+      <div class="reel-section-label">🎣 Hook (first 3 seconds)</div>
+      <p>Fear. Attachment. Anger. Pride. The Gnostics mapped all of them 2,000 years ago and called them *Archons*.</p>
+    </div>
+    <div class="reel-section">
+      <div class="reel-section-label">⚡ Disrupt (the unexpected angle)</div>
+      <p>Not external beings. Not supernatural enemies.
+
+Patterns. Architectural features of the unconscious mind that keep human beings trapped in repetitive cycles.
+
+The Gnostic map of seven Archons lines up almost exactly with what modern psychology calls the seven core wounds: shame, fear, anger, grief, abandonment, helplessness, confusion.
+
+They knew. They just had different words.</p>
+    </div>
+    <div class="reel-section">
+      <div class="reel-section-label">💡 Insight (the takeaway)</div>
+      <p>The path out isn't fighting them. It's *recognition* — the Greek word is *epinoia*. You look at the pattern and say: I see you. You are not me. That moment of clear seeing is what breaks the cycle. Not willpower. Recognition.</p>
+    </div>
+    <div class="reel-section">
+      <div class="reel-section-label">🔄 Open Loop (leave them wanting more)</div>
+      <p>The Archon Inventory in Module 6 asks you to name your three dominant patterns. Most people find the exercise uncomfortable. That discomfort is the Archon noticing it's been seen.</p>
+    </div>
+    <div class="reel-cta">
+      <div class="reel-cta-label">📲 Call to Action</div>
+      <p>Full course link in bio — $29.99 for all 8 modules.</p>
+    </div>
+  </div>
+</div>
+
+<div class="reel-card">
+  <div class="reel-header">
+    <span class="reel-num">Reel 7 / Module 7</span>
+    <span class="reel-title">What a Gnostic morning actually looks like</span>
+  </div>
+  <div class="reel-body">
+    <div class="reel-section">
+      <div class="reel-section-label">🎣 Hook (first 3 seconds)</div>
+      <p>Gnosis without practice is just philosophy. Here's what embodied Gnostic practice looks like.</p>
+    </div>
+    <div class="reel-section">
+      <div class="reel-section-label">⚡ Disrupt (the unexpected angle)</div>
+      <p>Morning. Before your phone. Before the news.
+
+Light a candle — a physical act that says: this time is different.
+Open a text — one saying from the Gospel of Thomas. Just one.
+Sit with it for five minutes. Don't analyse it. Let it work on you.
+Breathe. Notice what's here.
+
+That's it. That's a Gnostic morning.
+
+You don't need robes, or a temple, or an initiatory lineage. You need attention and intention.</p>
+    </div>
+    <div class="reel-section">
+      <div class="reel-section-label">💡 Insight (the takeaway)</div>
+      <p>The Bridal Chamber was the Gnostic sacrament of inner union — the masculine and feminine principles within you meeting and becoming whole. This is what the Gospel of Philip describes. It's not about gender — it's about integration.</p>
+    </div>
+    <div class="reel-section">
+      <div class="reel-section-label">🔄 Open Loop (leave them wanting more)</div>
+      <p>Module 7 has a full printable workbook for designing your personal practice. It takes 20 minutes and you'll use it for years.</p>
+    </div>
+    <div class="reel-cta">
+      <div class="reel-cta-label">📲 Call to Action</div>
+      <p>Link in bio — full course and free Oracle.</p>
+    </div>
+  </div>
+</div>
+
+<div class="reel-card">
+  <div class="reel-header">
+    <span class="reel-num">Reel 8 / Module 8</span>
+    <span class="reel-title">The Gnostic path doesn't end — here's where it actually begins</span>
+  </div>
+  <div class="reel-body">
+    <div class="reel-section">
+      <div class="reel-section-label">🎣 Hook (first 3 seconds)</div>
+      <p>Most spiritual traditions have an end point. Gnosis doesn't. The path doesn't end. It deepens.</p>
+    </div>
+    <div class="reel-section">
+      <div class="reel-section-label">⚡ Disrupt (the unexpected angle)</div>
+      <p>After 8 weeks — after orientation, cosmology, texts, Sophia, meditation, Archon work, ritual — Module 8 asks one question:
+
+*What do you actually know now?*
+
+Not what you've read. Not what you believe.
+
+What do you *know* — gnosis — from direct experience?
+
+That question is the beginning of the real path.</p>
+    </div>
+    <div class="reel-section">
+      <div class="reel-section-label">💡 Insight (the takeaway)</div>
+      <p>The Gnostic tradition is a living tradition. It didn't die when the Church burned the texts. It continued through alchemy, Kabbalah, Sufi mysticism, and today — in the work of everyone who asks: what am I, really, beneath what I've been told I am?</p>
+    </div>
+    <div class="reel-section">
+      <div class="reel-section-label">🔄 Open Loop (leave them wanting more)</div>
+      <p>Where to go next: the full course is on Gumroad. The Oracle is always open. And if you want to go deeper — join the community. Something is being built here.</p>
+    </div>
+    <div class="reel-cta">
+      <div class="reel-cta-label">📲 Call to Action</div>
+      <p>Full 8-module course — Gnostic Practices for Beginners. $29.99. Link in bio.</p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div id="calendar" class="section">
+  <div class="calendar-grid">
+    <div class="cal-header">Week</div>
+    <div class="cal-header">Monday</div>
+    <div class="cal-header tue-wed">Tue / Wed</div>
+    <div class="cal-header">Thursday</div>
+    <div class="cal-header">Friday</div>
+
+    <div class="cal-week">
+      <span>Wk 1</span>
+      <span class="theme" style="color:#4a7fa5;border-color:#4a7fa544;">What Is Gnosis?</span>
+    </div>
+    <div class="cal-cell">Reel 1 idea/script</div>
+    <div class="cal-cell tue-wed">Record Reel 1</div>
+    <div class="cal-cell">Edit Reel 1</div>
+    <div class="cal-cell fri">Post Reel 1 — Email 1 sends auto</div>
+
+    <div class="cal-week">
+      <span>Wk 2</span>
+      <span class="theme" style="color:#7a5fc0;border-color:#7a5fc044;">The Divine Spark</span>
+    </div>
+    <div class="cal-cell">Reel 2 idea/script</div>
+    <div class="cal-cell tue-wed">Record Reel 2</div>
+    <div class="cal-cell">Edit Reel 2</div>
+    <div class="cal-cell fri">Post Reel 2 — Email 2 sends auto</div>
+
+    <div class="cal-week">
+      <span>Wk 3</span>
+      <span class="theme" style="color:#5a8a6a;border-color:#5a8a6a44;">Nag Hammadi Texts</span>
+    </div>
+    <div class="cal-cell">Reel 3 idea/script</div>
+    <div class="cal-cell tue-wed">Record Reel 3</div>
+    <div class="cal-cell">Edit Reel 3</div>
+    <div class="cal-cell fri">Post Reel 3 — Email 3 sends auto</div>
+
+    <div class="cal-week">
+      <span>Wk 4</span>
+      <span class="theme" style="color:#a0507a;border-color:#a0507a44;">Sophia</span>
+    </div>
+    <div class="cal-cell">Reel 4 idea/script</div>
+    <div class="cal-cell tue-wed">Record Reel 4</div>
+    <div class="cal-cell">Edit Reel 4</div>
+    <div class="cal-cell fri">Post Reel 4 — Email 4 sends auto</div>
+
+    <div class="cal-week">
+      <span>Wk 5</span>
+      <span class="theme" style="color:#c9a84c;border-color:#c9a84c44;">Nous & Meditation</span>
+    </div>
+    <div class="cal-cell">Reel 5 idea/script</div>
+    <div class="cal-cell tue-wed">Record Reel 5</div>
+    <div class="cal-cell">Edit Reel 5</div>
+    <div class="cal-cell fri">Post Reel 5 — Email 5 sends auto</div>
+
+    <div class="cal-week">
+      <span>Wk 6</span>
+      <span class="theme" style="color:#a05050;border-color:#a0505044;">The Archons</span>
+    </div>
+    <div class="cal-cell">Reel 6 idea/script</div>
+    <div class="cal-cell tue-wed">Record Reel 6</div>
+    <div class="cal-cell">Edit Reel 6</div>
+    <div class="cal-cell fri">Post Reel 6 — Email 6 sends auto</div>
+
+    <div class="cal-week">
+      <span>Wk 7</span>
+      <span class="theme" style="color:#7a8a5a;border-color:#7a8a5a44;">Ritual & Practice</span>
+    </div>
+    <div class="cal-cell">Reel 7 idea/script</div>
+    <div class="cal-cell tue-wed">Record Reel 7</div>
+    <div class="cal-cell">Edit Reel 7</div>
+    <div class="cal-cell fri">Post Reel 7 — Email 7 sends auto</div>
+
+    <div class="cal-week">
+      <span>Wk 8</span>
+      <span class="theme" style="color:#4a7fa5;border-color:#4a7fa544;">Integration</span>
+    </div>
+    <div class="cal-cell">Reel 8 idea/script</div>
+    <div class="cal-cell tue-wed">Record Reel 8</div>
+    <div class="cal-cell">Edit Reel 8</div>
+    <div class="cal-cell fri">Post Reel 8 — Email 8 sends auto (Gumroad pitch)</div>
+
+  </div>
+  <p style="margin-top:20px;color:#6b5f7a;font-size:0.85rem;font-style:italic;text-align:center;">
+    Emails send automatically via MailerLite 7 days after subscribe. Post Reels on Friday → email lands same day for max effect.
+  </p>
+</div>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>

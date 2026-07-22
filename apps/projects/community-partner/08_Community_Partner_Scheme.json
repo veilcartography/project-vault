@@ -1,0 +1,23 @@
+{
+  "id": "08",
+  "project_name": "Community Partner Scheme",
+  "vault_project": "Email Manager / AI Operations System",
+  "status": "needs_clarification",
+  "memory": {
+    "what_this_project_is": "An online/social-media community partner scheme for people in the UK on low income who struggle with banks, saving, loans, or finance access.",
+    "known_details": [
+      "UK-focused",
+      "Online/social-media based",
+      "Intended audience: low-income people",
+      "Problem area: banking, saving, loans, finance access"
+    ],
+    "what_is_not_defined": [
+      "What is the actual offer?",
+      "Is it financial education / affiliate referrals / group buying / reselling partnership / budgeting support?",
+      "Is this still active?",
+      "Where does it belong: reseller operations / social enterprise / personal finance support?"
+    ],
+    "filing_status": "NEEDS CLARIFICATION — Mark as incomplete before filing",
+    "next_action": "Clarify the offer and audience → decide which project category it belongs to → file accordingly"
+  }
+}

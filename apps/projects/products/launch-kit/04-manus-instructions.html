@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veil Cartography — Manus Site Instructions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:#0a0a0f; color:#e8e0d0; font-family:'Crimson Pro',Georgia,serif; padding:40px 20px; }
+  h1 { font-family:'Cinzel',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); text-align:center; color:#c9a84c; letter-spacing:0.15em; margin-bottom:8px; }
+  .subtitle { text-align:center; color:#9b8ea0; font-style:italic; margin-bottom:40px; }
+  .max { max-width:720px; margin:0 auto; }
+  .instruction-block { background:#13121a; border:1px solid #2a2535; border-radius:12px; margin-bottom:24px; overflow:hidden; }
+  .block-header { background:#1a1520; padding:14px 22px; border-bottom:1px solid #2a2535; display:flex; align-items:center; gap:12px; }
+  .block-num { font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.2em; color:#6b5f7a; text-transform:uppercase; }
+  .block-title { font-family:'Cinzel',serif; font-size:0.9rem; color:#c9a84c; }
+  .block-status { margin-left:auto; font-size:0.7rem; padding:2px 10px; border-radius:10px; }
+  .status-done { background:#2a4a2a; color:#7ab88a; border:1px solid #5a8a6a44; }
+  .status-todo { background:#2a2a4a; color:#6ba3c8; border:1px solid #4a7fa544; }
+  .block-body { padding:22px; }
+  .block-body p { font-size:0.95rem; color:#b0a8b8; line-height:1.65; margin-bottom:12px; }
+  .prompt-box { background:#0f0e14; border:1px solid #3a3545; border-radius:8px; padding:16px; font-family:'JetBrains Mono',monospace; font-size:0.82rem; color:#c8c0d0; line-height:1.7; white-space:pre-wrap; margin-bottom:12px; }
+  .copy-btn { display:inline-block; padding:7px 16px; background:transparent; border:1px solid #c9a84c55; color:#c9a84c; border-radius:20px; cursor:pointer; font-size:0.75rem; letter-spacing:0.1em; font-family:'Cinzel',serif; transition:all 0.2s; }
+  .copy-btn:hover { background:#c9a84c11; border-color:#c9a84c; }
+  .checklist { display:flex; flex-direction:column; gap:8px; margin-top:8px; }
+  .check-item { display:flex; gap:10px; align-items:flex-start; font-size:0.9rem; color:#b0a8b8; }
+  .check-box { width:16px; height:16px; border:1px solid #3a3545; border-radius:3px; flex-shrink:0; margin-top:3px; }
+</style>
+</head>
+<body>
+<div class="max">
+<h1>Manus Site Update Instructions</h1>
+<p class="subtitle">Copy-paste prompts for each change — do these in order</p>
+
+<div class="instruction-block">
+  <div class="block-header">
+    <span class="block-num">Task 1</span>
+    <span class="block-title">Remove Free Courses & Update Nav</span>
+    <span class="block-status status-done">✓ Done by Manus</span>
+  </div>
+  <div class="block-body">
+    <p>According to Manus, these changes have already been made. Click <strong>Publish</strong> in the Management UI to deploy.</p>
+    <div class="checklist">
+      <div class="check-item"><div class="check-box" style="background:#2a4a2a;border-color:#5a8a6a;"></div>All free courses removed from database</div>
+      <div class="check-item"><div class="check-box" style="background:#2a4a2a;border-color:#5a8a6a;"></div>BEGIN buttons removed</div>
+      <div class="check-item"><div class="check-box" style="background:#2a4a2a;border-color:#5a8a6a;"></div>COURSES nav → https://veilcartography.gumroad.com</div>
+      <div class="check-item"><div class="check-box" style="background:#2a4a2a;border-color:#5a8a6a;"></div>Module 1 taster + Oracle + email capture still live</div>
+    </div>
+  </div>
+</div>
+
+<div class="instruction-block">
+  <div class="block-header">
+    <span class="block-num">Task 2</span>
+    <span class="block-title">Add MailerLite Email Integration</span>
+    <span class="block-status status-todo">To Do</span>
+  </div>
+  <div class="block-body">
+    <p>Once you have set up your MailerLite account and created your automation, paste this into Manus:</p>
+    <div class="prompt-box" id="prompt2">Please update the email capture on the Oracle and Module 1 page to send subscriber emails to my MailerLite account.
+
+My MailerLite API key is: [PASTE YOUR MAILERLITE API KEY HERE]
+My MailerLite group/list name is: Veil Cartography Oracle
+
+When a visitor submits their email (either on the Oracle after 3 questions, or on the Module 1 page), add them to this MailerLite group and trigger the automation sequence.
+
+Also ensure the Module 1 PDF is delivered by the first email in the MailerLite automation (not directly by the site).</div>
+    <button class="copy-btn" onclick="copyPrompt('prompt2', this)">Copy Prompt</button>
+  </div>
+</div>
+
+<div class="instruction-block">
+  <div class="block-header">
+    <span class="block-num">Task 3</span>
+    <span class="block-title">Add Mobile Loading Spinner to Oracle</span>
+    <span class="block-status status-todo">Optional / Recommended</span>
+  </div>
+  <div class="block-body">
+    <p>Manus suggested this improvement for mobile UX. Paste this when ready:</p>
+    <div class="prompt-box" id="prompt3">Please add a loading spinner to the Oracle chat interface that appears while the AI is generating a response. This should be visible on mobile devices especially. Use a subtle animation that matches the dark mystical aesthetic of the site — something like a pulsing star or rotating light element, not a generic CSS spinner.</div>
+    <button class="copy-btn" onclick="copyPrompt('prompt3', this)">Copy Prompt</button>
+  </div>
+</div>
+
+<div class="instruction-block">
+  <div class="block-header">
+    <span class="block-num">Task 4</span>
+    <span class="block-title">Add Gumroad Individual Module Links</span>
+    <span class="block-status status-todo">When Gumroad Products Are Published</span>
+  </div>
+  <div class="block-body">
+    <p>Once your Gumroad products are live, ask Manus to add individual module buy links anywhere appropriate on the site (e.g. after Module 1 taster):</p>
+    <div class="prompt-box" id="prompt4">After the Module 1 free taster page, please add a section that says:
+
+"Ready to go deeper? Continue your journey:"
+
+With the following links (open in new tab):
+- Module 2: The Gnostic Worldview — [GUMROAD MODULE 2 LINK]
+- Module 3: Sacred Texts Unlocked — [GUMROAD MODULE 3 LINK]
+- Complete Bundle (All 8 Modules) — $29.99 — [GUMROAD BUNDLE LINK]
+
+Style to match the existing dark mystical aesthetic. Use the gold accent colour for the Complete Bundle link.</div>
+    <button class="copy-btn" onclick="copyPrompt('prompt4', this)">Copy Prompt</button>
+  </div>
+</div>
+
+<div class="instruction-block">
+  <div class="block-header">
+    <span class="block-num">Task 5</span>
+    <span class="block-title">Publish Gumroad Products</span>
+    <span class="block-status status-todo">Action on Gumroad (not Manus)</span>
+  </div>
+  <div class="block-body">
+    <p>Your Gumroad products are all currently <strong>unpublished</strong>. Before running any paid campaigns, go to <a href="https://gumroad.com/products" target="_blank" style="color:#c9a84c;">gumroad.com/products</a> and:</p>
+    <div class="checklist">
+      <div class="check-item"><div class="check-box"></div>Delete the duplicate bundle listing (keep only one "Complete Bundle")</div>
+      <div class="check-item"><div class="check-box"></div>Add cover images and descriptions to each module</div>
+      <div class="check-item"><div class="check-box"></div>Upload PDF/content files for each module</div>
+      <div class="check-item"><div class="check-box"></div>Publish each product</div>
+      <div class="check-item"><div class="check-box"></div>Test purchase flow (buy one with a test card)</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function copyPrompt(id, btn) {
+  const box = document.getElementById(id);
+  navigator.clipboard.writeText(box.textContent).then(() => {
+    btn.textContent = 'Copied!';
+    setTimeout(() => { btn.textContent = 'Copy Prompt'; }, 2000);
+  });
+}
+</script>
+</body>
+</html>

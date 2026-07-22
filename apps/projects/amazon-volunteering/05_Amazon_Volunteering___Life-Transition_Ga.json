@@ -1,0 +1,41 @@
+{
+  "id": "05",
+  "project_name": "Amazon Volunteering / Life-Transition Gantt System",
+  "vault_project": "Personal Life Infrastructure",
+  "status": "active",
+  "memory": {
+    "what_this_project_is": "A planning and dependency-management system organising all areas of life and work toward the larger goal of volunteering in the Amazon. An interactive Gantt chart exists and is actively used.",
+    "purpose": [
+      "Track all current goals and tasks",
+      "Manage dependencies between projects",
+      "Prepare the flat so returning home is easier",
+      "Prevent loss of focus and forgotten tasks",
+      "Translate vague thoughts into charted next steps"
+    ],
+    "system_requirements": [
+      "Interactive Gantt chart",
+      "Countdown to major goal",
+      "Input thoughts, unfinished tasks, and changes",
+      "Auto-processing into: Tasks, Dependencies, Completed steps, New next actions",
+      "Expandable view of all project areas",
+      "Editable web page",
+      "Links to weekly review and daily dashboard"
+    ],
+    "why_needed": "Unmanaged dependencies, focus lapses, memory gaps, and time-blindness can derail progress. System should reduce cognitive load by making the next step obvious.",
+    "database_fields": [
+      "Goal/Project",
+      "Area of Life",
+      "Task",
+      "Dependency",
+      "Deadline",
+      "Status",
+      "Energy Required",
+      "Priority",
+      "Next Step",
+      "Blocker",
+      "Review Date",
+      "Related Page"
+    ],
+    "next_action": "Connect Gantt outputs to tasks → weekly review → project dashboards"
+  }
+}

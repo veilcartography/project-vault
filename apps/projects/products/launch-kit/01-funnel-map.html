@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veil Cartography — Funnel Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0a0a0f;
+    color: #e8e0d0;
+    font-family: 'Crimson Pro', Georgia, serif;
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    text-align: center;
+    letter-spacing: 0.15em;
+    color: #c9a84c;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    text-align: center;
+    color: #9b8ea0;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 48px;
+    font-style: italic;
+  }
+  .funnel {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: center;
+  }
+  .step {
+    width: 100%;
+    max-width: 600px;
+    background: #13121a;
+    border: 1px solid #2a2535;
+    border-radius: 12px;
+    padding: 24px 28px;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+  .step:hover { border-color: #c9a84c44; }
+  .step-number {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: #6b5f7a;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .step-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.05rem;
+    color: #c9a84c;
+    margin-bottom: 6px;
+  }
+  .step-desc {
+    font-size: 0.95rem;
+    color: #b8b0c0;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .step-platform {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid;
+  }
+  .platform-youtube { border-color: #ff4444; color: #ff6666; }
+  .platform-site { border-color: #4a7fa5; color: #6ba3c8; }
+  .platform-email { border-color: #5a8a6a; color: #7ab88a; }
+  .platform-stripe { border-color: #7a5fc0; color: #9b83d8; }
+  .platform-gumroad { border-color: #c9a84c; color: #e8c96a; }
+
+  .arrow {
+    width: 2px;
+    height: 32px;
+    background: linear-gradient(to bottom, #2a2535, #c9a84c44);
+    margin: 0 auto;
+    position: relative;
+  }
+  .arrow::after {
+    content: '▼';
+    position: absolute;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #c9a84c66;
+    font-size: 0.7rem;
+  }
+
+  .step-icon {
+    float: right;
+    font-size: 1.8rem;
+    margin-left: 16px;
+    margin-top: -4px;
+  }
+
+  .key-insight {
+    max-width: 600px;
+    margin: 40px auto 0;
+    background: #1a1520;
+    border: 1px solid #c9a84c33;
+    border-radius: 12px;
+    padding: 20px 24px;
+  }
+  .key-insight h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: #c9a84c;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .key-insight ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .key-insight li {
+    font-size: 0.9rem;
+    color: #9b8ea0;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .key-insight li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: #c9a84c66;
+    font-size: 0.5rem;
+    top: 5px;
+  }
+
+  @media (max-width: 480px) {
+    .step-icon { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Veil Cartography — Funnel Map</h1>
+<p class="subtitle">The Oracle → Email → Gumroad Journey</p>
+
+<div class="funnel">
+
+  <div class="step">
+    <span class="step-icon">🎬</span>
+    <div class="step-number">Step 1 — Discovery</div>
+    <div class="step-title">YouTube / Reels (Noesis Uncovered)</div>
+    <div class="step-desc">Viewer watches a 60-second reel on Gnosis, Sophia, Archons, or the Hidden Texts. Hook lands. Curiosity sparked. Link in bio clicked.</div>
+    <span class="step-platform platform-youtube">YouTube / Reels</span>
+  </div>
+
+  <div class="arrow"></div>
+
+  <div class="step">
+    <span class="step-icon">🔮</span>
+    <div class="step-number">Step 2 — Low Friction Entry</div>
+    <div class="step-title">The Gnostic Gospels Oracle (Free)</div>
+    <div class="step-desc">Visitor asks the Oracle free questions — no login, no commitment. Quality of AI answers creates trust and emotional investment in the tradition.</div>
+    <span class="step-platform platform-site">Your Website</span>
+  </div>
+
+  <div class="arrow"></div>
+
+  <div class="step">
+    <span class="step-icon">📩</span>
+    <div class="step-number">Step 3 — Email Capture (After 3 Questions)</div>
+    <div class="step-title">"Get Module 1 Free" Gate</div>
+    <div class="step-desc">After the 3rd question, an email gate appears: "Download Module 1: What Is Gnosis? — free PDF." Visitor submits email. Lead captured. You own this relationship — not Gumroad.</div>
+    <span class="step-platform platform-site">Your Website</span>
+  </div>
+
+  <div class="arrow"></div>
+
+  <div class="step">
+    <span class="step-icon">📖</span>
+    <div class="step-number">Step 4 — Proof of Value</div>
+    <div class="step-title">Module 1 PDF Delivered by Email</div>
+    <div class="step-desc">Automated email delivers the PDF instantly. Subscriber experiences real depth — this isn't watered-down content. It proves the course is worth buying. Warm lead created.</div>
+    <span class="step-platform platform-email">MailerLite</span>
+  </div>
+
+  <div class="arrow"></div>
+
+  <div class="step">
+    <span class="step-icon">✉️</span>
+    <div class="step-number">Step 5 — 8-Email Nurture Sequence</div>
+    <div class="step-title">One Email Per Module (8 Weeks)</div>
+    <div class="step-desc">Each week, one email teases the next module's theme — Sophia, Archons, Meditation, Ritual. Every email ends with a soft Gumroad offer. By email 6–8, the full course sale is made.</div>
+    <span class="step-platform platform-email">MailerLite</span>
+  </div>
+
+  <div class="arrow"></div>
+
+  <div class="step">
+    <span class="step-icon">💜</span>
+    <div class="step-number">Step 6 — Recurring Revenue (After 6 Oracle Questions)</div>
+    <div class="step-title">Oracle Subscription — £5.99/month</div>
+    <div class="step-desc">Heavy Oracle users hit the paywall after question 6. Stripe subscription: unlimited Oracle access for £5.99/month. Passive recurring income separate from course sales.</div>
+    <span class="step-platform platform-stripe">Stripe</span>
+  </div>
+
+  <div class="arrow"></div>
+
+  <div class="step">
+    <span class="step-icon">🎓</span>
+    <div class="step-number">Step 7 — The Sale</div>
+    <div class="step-title">Gumroad — Full Course Purchase</div>
+    <div class="step-desc">Warm, email-nurtured lead clicks through to Gumroad. Options: individual modules at $4.99 each, or Complete Bundle at $29.99. Already trusts you — conversion is high.</div>
+    <span class="step-platform platform-gumroad">Gumroad</span>
+  </div>
+
+</div>
+
+<div class="key-insight">
+  <h3>Why This Funnel Works</h3>
+  <ul>
+    <li>You capture the email before Gumroad does — you own the relationship permanently</li>
+    <li>Module 1 PDF is proof of value — they buy because they've already experienced quality</li>
+    <li>Oracle addiction creates emotional investment before any money changes hands</li>
+    <li>Stripe subscription provides monthly recurring income independent of course sales</li>
+    <li>8-week email sequence matches your 8-module course — every email is relevant content, not spam</li>
+    <li>Cold YouTube traffic → warm Gumroad buyer in 8 weeks, with your email list growing throughout</li>
+  </ul>
+</div>
+
+</body>
+</html>

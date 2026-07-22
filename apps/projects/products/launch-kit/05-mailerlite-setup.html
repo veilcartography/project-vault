@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MailerLite Setup Guide — Veil Cartography</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:#0a0a0f; color:#e8e0d0; font-family:'Crimson Pro',Georgia,serif; padding:40px 20px; }
+  h1 { font-family:'Cinzel',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); text-align:center; color:#c9a84c; letter-spacing:0.15em; margin-bottom:8px; }
+  .subtitle { text-align:center; color:#9b8ea0; font-style:italic; margin-bottom:40px; }
+  .max { max-width:680px; margin:0 auto; }
+  .step-block { background:#13121a; border:1px solid #2a2535; border-radius:12px; margin-bottom:20px; overflow:hidden; }
+  .step-header { background:#1a1520; padding:12px 22px; border-bottom:1px solid #2a2535; display:flex; gap:12px; align-items:center; }
+  .step-n { font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.2em; color:#6b5f7a; text-transform:uppercase; }
+  .step-title { font-family:'Cinzel',serif; font-size:0.9rem; color:#c9a84c; }
+  .step-body { padding:20px 22px; }
+  .step-body p { font-size:0.95rem; color:#b0a8b8; line-height:1.65; margin-bottom:10px; }
+  .step-body ul, .step-body ol { padding-left:20px; display:flex; flex-direction:column; gap:7px; margin-bottom:10px; }
+  .step-body li { font-size:0.9rem; color:#b0a8b8; line-height:1.55; }
+  .step-body strong { color:#e8e0d0; }
+  .tip { background:#1a1520; border:1px solid #c9a84c33; border-radius:8px; padding:12px 16px; margin-top:10px; }
+  .tip-label { font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:#c9a84c88; margin-bottom:4px; }
+  .tip p { font-size:0.85rem; color:#9b8ea0; margin-bottom:0; }
+  a { color:#c9a84c; }
+  .automation-flow { display:flex; flex-direction:column; gap:0; margin:12px 0; }
+  .auto-step { background:#0f0e14; border:1px solid #2a2535; padding:10px 16px; font-size:0.85rem; color:#b0a8b8; }
+  .auto-step:first-child { border-radius:8px 8px 0 0; }
+  .auto-step:last-child { border-radius:0 0 8px 8px; }
+  .auto-arrow { text-align:center; color:#3a3545; font-size:0.8rem; padding:4px; background:#0f0e14; border-left:1px solid #2a2535; border-right:1px solid #2a2535; }
+  .auto-step strong { color:#c9a84c; }
+</style>
+</head>
+<body>
+<div class="max">
+<h1>MailerLite Setup Guide</h1>
+<p class="subtitle">Free email platform · Up to 1,000 subscribers free · Perfect for Veil Cartography</p>
+
+<div class="step-block">
+  <div class="step-header">
+    <span class="step-n">Step 1</span>
+    <span class="step-title">Create Your Free Account</span>
+  </div>
+  <div class="step-body">
+    <ol>
+      <li>Go to <a href="https://mailerlite.com" target="_blank">mailerlite.com</a> and click <strong>Sign Up Free</strong></li>
+      <li>Use your Veil Cartography business email if possible</li>
+      <li>Verify your email address</li>
+      <li>Complete the profile setup — use <strong>Veil Cartography</strong> as your company name</li>
+    </ol>
+    <div class="tip">
+      <div class="tip-label">Free tier limits</div>
+      <p>Free forever up to 1,000 subscribers and 12,000 emails/month. More than enough to get started.</p>
+    </div>
+  </div>
+</div>
+
+<div class="step-block">
+  <div class="step-header">
+    <span class="step-n">Step 2</span>
+    <span class="step-title">Create Your Subscriber Group</span>
+  </div>
+  <div class="step-body">
+    <ol>
+      <li>Go to <strong>Subscribers → Groups</strong></li>
+      <li>Click <strong>Create Group</strong></li>
+      <li>Name it: <strong>Veil Cartography Oracle</strong></li>
+      <li>Create a second group: <strong>Gumroad Buyers</strong> (for people who have purchased)</li>
+    </ol>
+    <div class="tip">
+      <div class="tip-label">Why two groups?</div>
+      <p>People in "Gumroad Buyers" can be excluded from the course sales emails — so buyers don't keep receiving pitches for something they've already bought.</p>
+    </div>
+  </div>
+</div>
+
+<div class="step-block">
+  <div class="step-header">
+    <span class="step-n">Step 3</span>
+    <span class="step-title">Create the Automation (Email Sequence)</span>
+  </div>
+  <div class="step-body">
+    <p>Go to <strong>Automations → Create Automation</strong>. Build this flow:</p>
+    <div class="automation-flow">
+      <div class="auto-step">🔵 <strong>Trigger:</strong> Subscriber joins group "Veil Cartography Oracle"</div>
+      <div class="auto-arrow">↓</div>
+      <div class="auto-step">📧 <strong>Email 1:</strong> Module 1 PDF delivery (send immediately) — subject: "📖 Your Module 1 PDF is inside..."</div>
+      <div class="auto-arrow">↓</div>
+      <div class="auto-step">⏱️ <strong>Delay:</strong> 7 days</div>
+      <div class="auto-arrow">↓</div>
+      <div class="auto-step">📧 <strong>Email 2:</strong> The Divine Spark — subject: "✨ You carry a fragment of divine light..."</div>
+      <div class="auto-arrow">↓</div>
+      <div class="auto-step">⏱️ <strong>Delay:</strong> 7 days · (repeat pattern for Emails 3–8)</div>
+      <div class="auto-arrow">↓</div>
+      <div class="auto-step">📧 <strong>Emails 3–8:</strong> Add each email from the sequence file, 7 days apart</div>
+    </div>
+    <p style="margin-top:12px;">Copy each email body from your <strong>02-email-sequence.html</strong> file and paste into MailerLite's email editor.</p>
+  </div>
+</div>
+
+<div class="step-block">
+  <div class="step-header">
+    <span class="step-n">Step 4</span>
+    <span class="step-title">Upload Your Module 1 PDF</span>
+  </div>
+  <div class="step-body">
+    <ol>
+      <li>In Email 1, attach the Module 1 PDF as a file link (MailerLite allows file hosting)</li>
+      <li>Go to <strong>Files</strong> in your MailerLite account and upload the PDF</li>
+      <li>Copy the file URL and insert it as a button/link in Email 1: <strong>"Click here to download your PDF →"</strong></li>
+    </ol>
+    <div class="tip">
+      <div class="tip-label">Alternative</div>
+      <p>Keep the PDF delivery on the website (as Manus currently has it) and use Email 1 purely as the welcome + confirmation. Either approach works.</p>
+    </div>
+  </div>
+</div>
+
+<div class="step-block">
+  <div class="step-header">
+    <span class="step-n">Step 5</span>
+    <span class="step-title">Get Your API Key for Manus</span>
+  </div>
+  <div class="step-body">
+    <ol>
+      <li>Go to <strong>Integrations → API</strong> in your MailerLite account</li>
+      <li>Click <strong>Generate New Token</strong></li>
+      <li>Name it: <strong>Veil Cartography Site</strong></li>
+      <li>Copy the API key — you'll need it for the Manus integration prompt in your instructions file</li>
+    </ol>
+    <div class="tip">
+      <div class="tip-label">Security note</div>
+      <p>Keep this API key private — don't share it publicly or post it anywhere. Only give it to Manus in a private conversation.</p>
+    </div>
+  </div>
+</div>
+
+<div class="step-block">
+  <div class="step-header">
+    <span class="step-n">Step 6</span>
+    <span class="step-title">Test Everything</span>
+  </div>
+  <div class="step-body">
+    <ol>
+      <li>Go to your Oracle site and ask 3 questions</li>
+      <li>Enter your own email address when the gate appears</li>
+      <li>Check your inbox — Email 1 should arrive within 1 minute</li>
+      <li>Verify the PDF link works</li>
+      <li>Check your MailerLite subscriber list — you should appear in "Veil Cartography Oracle" group</li>
+    </ol>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

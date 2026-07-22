@@ -1,0 +1,33 @@
+{
+  "id": "11",
+  "project_name": "Pardner ROSCA (Community & Collaborative Savings)",
+  "vault_project": "Personal Life Infrastructure",
+  "status": "active",
+  "memory": {
+    "what_this_project_is": "A localized, trust-centric digital social enterprise resurrecting traditional rotating savings club structures (ROSCA / Pardner associations). A transparent, digital-only alternative to credit markets.",
+    "how_it_works": {
+      "group_size": "5 trusted friends",
+      "weekly_contribution": "£12 per person",
+      "pot_split": "£10 → rotating weekly pot | £2 → admin + charity margin",
+      "weekly_payout": "One member takes full £50 lump-sum hand in pre-shuffled cycle",
+      "compliance": "No cash — all transfers digital-only, backed by written group agreements"
+    },
+    "assets_built": {
+      "implementation_guide": "ROSCA Social Enterprise Complete Implementation Guide — Master PDF blueprint (Dec 17, 2025)",
+      "tracking_toolkit": {
+        "first_circle_table": "Join order, Member IDs (format: INITIALS-WEEK-MONTH-YEAR), rotating hand dates, payment drop-downs",
+        "suitable_people_table": "5-tester reliability screening matrix"
+      },
+      "marketing_templates": [
+        "Pre-written WhatsApp outreach invite copies",
+        "Formal onboarding agreements (Pardner Scheme Pilot Group Agreement)"
+      ]
+    },
+    "next_actions": [
+      "Launch pilot group using existing toolkit",
+      "Use WhatsApp templates to recruit first 5 members",
+      "Track first rotation using First-Circle Tracking Table",
+      "Consider packaging implementation guide as a sellable product"
+    ]
+  }
+}
